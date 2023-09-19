@@ -1,0 +1,445 @@
+.commentDiv {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    align-items: flex-start;
+    gap: 4.8rem;
+    align-self: stretch;
+}
+
+.commentBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3.2rem;
+    align-self: stretch;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.comment .main {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.comment .sub {
+    position: relative;
+    display: inline-flex;
+    padding: 0rem 0rem 0rem 4.4rem;
+    align-items: flex-start;
+}
+
+.comment .sub .subBlock {
+    display: inline-flex;
+    padding: 1.6rem 0rem 0rem 0rem;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.comment .sub .nameText{
+    color: var(--G1, #2A2933);
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 1.2rem */
+}
+
+.comment .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.comment .sub .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.comment .nameBlock {
+    display: flex;
+    padding-left: 0.4rem;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.comment .buttonBlock {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.6rem;
+}
+
+.comment .buttonBlock .buttonArea{
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.3s;
+}
+
+.comment .buttonBlock .buttonArea:hover {
+    opacity: 0.85;
+    transition: all 0.3s;
+}
+
+.comment .buttonBlock .buttonArea:hover .buttonTextActive {
+    color: var(--Brand, #5741E7);
+    transition: all 0.3s;
+}
+
+
+.comment .buttonBlock .buttonArea svg path{
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.3s;
+}
+
+.comment .buttonBlock .deleteButton {
+    width: 2rem;
+    height: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.comment .buttonBlock .deleteButton svg path{
+    transition: all 0.3s;
+}
+
+.comment .buttonBlock .deleteButton:hover svg path{
+    fill: #EE426D;
+    fill-opacity: 1;
+    transition: all 0.3s;
+}
+
+
+.comment .buttonBlock .buttonArea:hover .buttonTextDefault,
+.comment .buttonBlock .buttonArea:hover svg path{
+    opacity: 1;
+    color: var(--Brand, #5741E7);
+    fill: var(--Brand, #5741E7);
+    fill-opacity: 1;
+    transition: all 0.3s;
+}
+
+.buttonBlock .buttonArea .buttonTextDefault {
+    color: var(--GO3, rgba(25, 19, 64, 0.35));
+    padding-top: 0.3rem;
+    font-size: 1.2rem;
+    font-style: normal;
+    line-height: 100%;
+    font-weight: 400;
+    transition: all 0.3s;
+}
+
+.buttonBlock .buttonArea .buttonTextActive {
+    color: var(--Brand, #5741E7);
+    padding-top: 0.3rem;
+    padding-bottom: 0rem;
+    font-size: 1.2rem;
+    line-height: 100%;
+    font-style: normal;
+    font-weight: 400;
+    transition: all 0.3s;
+}
+
+.content:hover .deleteButton {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+}
+
+.comment .commentText {
+    display: flex;
+    max-width: 67rem;
+    padding: 0.8rem 1.2rem;
+    align-items: flex-start;
+    gap: 1rem;
+
+    max-width: 58rem;
+    color: var(--G1, #2A2933);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 150%; /* 2.1rem */
+
+    border-radius: 0.8rem;
+    background: var(--GO6, rgba(66, 62, 89, 0.06));
+}
+
+.comment .sub .commentText {
+    display: flex;
+    max-width: 67rem;
+    padding: 0.8rem 1.2rem;
+    align-items: flex-start;
+    gap: 1rem;
+
+    max-width: 58rem;
+    color: var(--G1, #2A2933);
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 150%; /* 2.1rem */
+
+    border-radius: 0.8rem;
+    background: var(--GO6, rgba(66, 62, 89, 0.06));
+}
+
+.comment .nameText {
+    color: var(--G1, #2A2933);
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 1.3rem */
+}
+
+.comment .dateText {
+    color: var(--GO3, rgba(25, 19, 64, 0.35));
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 100%; /* 1.3rem */
+}
+
+.comment .sub .dateText {
+    color: var(--GO3, rgba(25, 19, 64, 0.35));
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 100%; /* 1.3rem */
+}
+
+.subComment {
+    display: flex;
+    padding: 1.6rem 0rem 0rem 4.4rem;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+
+.comment .main .mainLine {
+    width: 1.8rem;
+    height: auto;
+
+    position: absolute;
+    left: 0.4rem;
+    top: 5rem;
+    bottom: 0rem;
+
+    border-right: 1px solid hsla(100, 0%, 0%, 0.1);
+    z-index: 2;
+}
+
+.comment .sub .subLine {
+    width: 1.7rem;
+    height: 3.6rem;
+
+    position: absolute;
+    left: -0.1rem;
+
+    border-radius: 0rem 0rem 0rem 2rem;
+    border-bottom: 1px solid hsla(100, 0%, 0%, 0.1);;
+    border-left: 1px solid hsla(100, 0%, 0%, 0.1);;
+}
+
+.comment .sub .subLineMask {
+    width: 1.8rem;
+    height: 4rem;
+
+    position: absolute;
+    left: 2.3rem;
+    overflow: hidden;
+}
+
+.comment .sub .subLineNoMask {
+    width: 1.8rem;
+    height: 4rem;
+
+    position: absolute;
+    left: 2.2rem;
+}
+
+.comment .sub .subLineToNext {
+    width: 1.8rem;
+    height: auto;
+
+    position: absolute;
+    top: 0rem;
+    left: 0.4rem;
+    bottom: 0rem;
+
+    border-right: 1px solid hsla(100, 0%, 0%, 0.1);;
+}
+
+.content > textarea{
+    display: flex;
+    height: 5.6rem;
+    width: 50rem;
+    padding: 0.6rem 1.2rem;
+    align-items: flex-start;
+    gap: 1rem;
+    align-self: stretch;
+    font-size: 1.4rem;
+    line-height: 130%;
+
+    border-radius: 0.8rem;
+    border: 1px solid var(--GO4, rgba(36, 32, 64, 0.20));
+    background: rgba(0, 0, 0, 0.01);
+}
+
+.content > textarea:focus {
+    outline: none;
+    border-color: var(--GO1, rgba(13, 10, 38, 0.80));
+}
+
+.content ::placeholder {
+    font-size: 1.4rem;
+}
+
+.content .submitButton{
+    display: flex;
+    padding: 1rem 2.2rem;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3rem;
+    line-height: 100%;
+    border-radius: 10rem;
+    background: var(--BrandGd, linear-gradient(96deg, #4C36E0 5.31%, #6852F2 100%));
+    transition: all 0.3s;
+}
+
+.content .submitButton:disabled{
+    cursor: not-allowed;
+    background: hsla(0, 0%, 0%, 0.2);
+    transition: all 0.3s;
+}
+
+.content .closeButton{
+    display: flex;
+    padding: 1rem 1.2rem;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3rem;
+    line-height: 100%;
+    border-radius: 10rem;
+    color: var(--GO2, rgba(20, 15, 51, 0.55));
+    background: hsla(0, 0%, 0%, 0);
+    transition: all 0.3s;
+}
+
+.content .submitButton:hover{
+    opacity: 0.8;
+    transition: all 0.3s;
+}
+
+.content .closeButton:hover{
+    opacity: 1;
+    transition: all 0.3s;
+    background: var(--GO5, rgba(50, 46, 77, 0.10));
+}
+
+.content .buttonBlockSubmit {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.content .subContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.content .subContent .textCnt {
+    color: var(--G3, #A3A1B2);
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 100%; /* 1.4rem */
+}
+
+
+.commentDiv .sendComment{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    align-self: stretch;
+}
+
+.commentDiv .sendComment textarea {
+    display: flex;
+    height: 12rem;
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    align-items: flex-start;
+    gap: 1rem;
+    align-self: stretch;
+    line-height: 150%;
+
+    border-radius: 0.8rem;
+    border: 1px solid var(--GO4, rgba(36, 32, 64, 0.20));
+}
+
+.commentDiv .sendComment textarea::placeholder {
+    color: var(--GO3, rgba(30, 26, 64, 0.35));
+}
+
+.sendComment textarea:focus {
+    outline: none;
+    border-color: var(--GO1, rgba(13, 10, 38, 0.80));
+}
+
+.commentDiv .sendComment .buttonArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    transition: all 0.3s;
+}
+
+.sendComment .buttonArea .submitButton {
+    display: flex;
+    padding: 1.2rem 3.6rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    line-height: 100%;
+
+    border-radius: 10rem;
+    background: var(--BrandGd, linear-gradient(96deg, #4C36E0 5.31%, #6852F2 100%));
+    transition: all 0.3s;
+}
+
+.sendComment .buttonArea .submitButton:disabled {
+    cursor: not-allowed;
+    background: hsla(0, 0%, 0%, 0.2);
+    transition: all 0.3s;
+}
+
+.sendComment .buttonArea .textCnt{
+    color: var(--G3, #A3A1B2);
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 100%; /* 1.4rem */
+    transition: all 0.3s;
+}
+
+
+.titleBox{
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}

@@ -1,0 +1,13 @@
+/* Delete Item */
+.delete-page * img{
+    border-radius: 1rem;
+    width: 60%;
+}
+
+.delete-page * h1{
+    margin-bottom: 1.5rem;
+}
+
+.delete-page * h2{
+    margin: 1rem 0;
+}

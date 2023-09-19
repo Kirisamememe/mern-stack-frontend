@@ -1,0 +1,104 @@
+.animeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.like36Animation1 {
+    transform-origin: bottom;
+    animation: like36A1 0.5s linear forwards;
+}
+
+@keyframes like36A1 {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    20% {
+        transform: scale(1.15) rotate(-8deg) translateY(-3px) translateX(3px);
+    }
+    50%{
+        transform: scale(1.14) rotate(-8deg) translateY(-3px) translateX(3px);
+    }
+    85%{
+        transform: scale(0.94) rotate(2deg) translateY(1px);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.like36Animation2 {
+    animation: like36A2 0.5s linear forwards;
+}
+
+@keyframes like36A2 {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    30% {
+        transform: scale(1.1) rotate(-4deg) translateY(-6px) translateX(-1px);
+    }
+    60%{
+        transform: scale(1.1) rotate(-4deg) translateY(-6px) translateX(-1px);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.like20Animation {
+    transform-origin: bottom;
+    animation: like20A1 0.4s linear forwards;
+}
+
+@keyframes like20A1 {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    30% {
+        transform: scale(1.1) rotate(-8deg) translateY(-2px);
+    }
+    75%{
+        transform: scale(1.1) rotate(-8deg) translateY(-2px);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+
+.collect36Animation1 {
+    transform-origin: bottom;
+    animation: collect36A1 0.5s ease-in-out forwards;
+}
+
+@keyframes collect36A1 {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(1.15) translateY(-4px);
+    }
+    80%{
+        transform: scale(0.9) translateY(2px);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.collect36Animation2 {
+    animation: collect36A2 0.5s ease-out forwards;
+}
+
+@keyframes collect36A2 {
+    0% {
+        transform: scale(1) rotateY(0deg);
+    }
+    30% {
+        transform: scale(1.1) rotateY(120deg);
+    }
+    100% {
+        transform: scale(1) rotateY(360deg);
+    }
+}

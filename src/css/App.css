@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap");
+
+/* Common style */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+	font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.homePageBackground {
+	background: var(--G7, #F8F7FA);
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-weight: 300;
+    color: var(--G1, #2A2933);
+}
+
+
+
+h1{
+    color: var(--G1, #2A2933);
+	font-size: 3.2rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 125%;
+	align-self: stretch;
+}
+
+h2{
+    color: var(--G1, #2A2933);
+	font-size: 1.6rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 125%; /* 18px */
+}
+
+h3{
+    color: var(--G3, #A3A1B2);
+	font-size: 1.2rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 100%; /* 12px */
+}
+
+h4{
+	color: var(--G3, #A3A1B2);
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 100%; /* 12px */
+}
+
+h5{
+	font-size: 1.8rem;
+	font-weight: 600;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+
+
+/* Form */
+label{
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+}
+
+
+/* Create Item */
+/* Update Item */
+/* Register */
+/* Login */
+
+/* Footer */
+footer{
+	display: flex;
+    text-align: center;
+	justify-content: center;
+    margin: 6rem auto;
+    align-items: center;
+	flex-shrink: 0;
+}
+
+
+

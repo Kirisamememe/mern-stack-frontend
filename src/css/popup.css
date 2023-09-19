@@ -1,0 +1,46 @@
+/* ポップアップの背景を暗くするスタイル */
+.popup-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* 他の要素より前に来るように */
+}
+  
+/* ポップアップ自体のスタイル */
+.popup {
+    display: flex;
+    flex-direction: column;
+    width: 300px;  /* 例: 幅300px */
+    padding: 3.6rem 2.4rem 2.4rem;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    gap: 3.2rem;
+    animation: slideDown 0.3s ease-in-out;
+}
+
+.popup-buttonBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+@keyframes slideDown {
+    from {
+      transform: translateY(-30%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+  
+
+
