@@ -11,13 +11,12 @@ import * as Types from "../../types"
 
 type SubCommentProps = {commentUpdated: boolean, setCommentUpdated: React.Dispatch<React.SetStateAction<boolean>>} & Types.SubCommentType
 
-const SubComment = ({ userId, userName, date, userAvatar, commentId, subCommentId, commentText, likeCnt, likeState, isLast, commentUpdated, setCommentUpdated}: SubCommentProps) => {
+const SubComment = ({ userId, userName, date, userAvatar, commentId, subCommentId, commentText, like, likeCnt, isLast, commentUpdated, setCommentUpdated}: SubCommentProps) => {
 
     const { loginUser } = useAuth()
     const navigate = useNavigate()
 
-    const [cmtSbLikes, setSbCmtLikes] = useState(likeCnt);
-    const [isSbCmtLiked, setIsSbCmtLiked] = useState(likeState)
+    
 
     //ログイン判定
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -36,6 +35,9 @@ const SubComment = ({ userId, userName, date, userAvatar, commentId, subCommentI
 
     //いいね操作関連
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    const [cmtSbLikes, setSbCmtLikes] = useState(likeCnt);
+    const [isSbCmtLiked, setIsSbCmtLiked] = useState(like.includes(loginUser?.userId || "null"))
+
     const handleSbCommentLike = () => {
         if (loginUser) {
             setAnimate(true)

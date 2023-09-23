@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { FormatDatePro } from "../../components/FormartDate"
 import * as Types from "../../types"
+import { fetchBase } from '../../apiHelper'
 
 
 const ReadAll = () => {
@@ -13,7 +14,7 @@ const ReadAll = () => {
         document.body.classList.add('homePageBackground');
 
         const getAllItems = async () => {
-            const response = await fetch("http://localhost:5050")
+            const response = await fetchBase()
             const jsonResponse = await response.json()
             setAllItem(jsonResponse)
         }

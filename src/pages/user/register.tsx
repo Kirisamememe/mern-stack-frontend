@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import * as Types from "../../types"
 // import ImgInput from "../../components/imgInput"
 import FloatLabel from "../../components/FloatLabel"
+import { postRegister } from '../../apiHelper'
 
 const Register = () => {
     const [newUser, setNewUser] = useState({
@@ -57,14 +58,8 @@ const Register = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
-            const response = await fetch("http://localhost:5050/user/register", {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newUser)
-            })
+            const response = await postRegister(newUser)
+            
             const jsonResponse = await response.json()
             alert(jsonResponse.message)
         } catch (error) {

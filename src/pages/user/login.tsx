@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import { useAuth } from "../../utils/AuthContext";
 import FloatLabel from "../../components/FloatLabel"
 import * as Types from "../../types"
+import { postUserLogin } from '../../apiHelper'
 //useAuthは名前付きエクスポートだから、{}が必要。default exportの場合は{}は不要
 
 
@@ -45,14 +46,7 @@ const Login = () => {
 
         //入力されたユーザー情報に基づいてサーバーに問い合わせます
         try {
-            const response = await fetch("http://localhost:5050/user/login", {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(userInfo)　//ユーザー情報が入ったjsonファイルに変換する
-            })
+            const response = await postUserLogin(userInfo)
 
             const jsonResponse = await response.json()
 

@@ -9,6 +9,8 @@ import { InputSubComment } from "./InputComment"
 import { HandleDeleteComment } from "../../pages/item/delete"
 import {Popup, PopupCaution} from "../ConfirmPopup"
 import * as Types from "../../types"
+import { fetchPostSubComment } from '../../apiHelper'
+
 type CommentProps = {commentUpdated: boolean, setCommentUpdated: React.Dispatch<React.SetStateAction<boolean>>} & Types.CommentType
 
 const Comment = ({ 
@@ -18,8 +20,8 @@ const Comment = ({
     date, 
     userAvatar, 
     commentText, 
+    like,
     likeCnt,
-    likeState,
     subComments, 
     commentUpdated, 
     setCommentUpdated }: CommentProps) => {
@@ -87,7 +89,7 @@ const Comment = ({
     //いいね関連
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     const [cmtLikes, setCmtLikes] = useState(likeCnt);
-    const [isCmtLiked, setIsCmtLiked] = useState(likeState)
+    const [isCmtLiked, setIsCmtLiked] = useState(like.includes(loginUser?.userId || "null"))
 
     const likeTextClass = isCmtLiked ? "buttonTextActive" : "buttonTextDefault"
 
@@ -119,19 +121,7 @@ const Comment = ({
 
     const handleCommentSubmit = async( sendText: string ) => {
         try {
-            const response = await fetch(`http://localhost:5050/comment/${commentId}`, {
-                method: "POST",
-                headers: { 
-                    "Accept": "application/json", 
-                    "Content-Type": "application/json",
-                    "authorization": `Bearer ${localStorage.getItem("token")}`
-                },
-                body: JSON.stringify({
-                    userId: localStorage.getItem("userId"),
-                    commentId: commentId,
-                    commentText: sendText,
-                })
-            })
+            const response = await fetchPostSubComment({commentId, sendText})
 
             const jsonData = await response.json()
             alert(jsonData.message) 
@@ -216,9 +206,9 @@ const Comment = ({
                 toggleTextArea={toggleTextArea}
                 handleCommentSubmit={handleCommentSubmit} 
             />
-            {subComments && subComments.map((subComment, index) => (
+            {subComments && subComments.map((subComment) => (
                 <SubComment
-                key={index}
+                key={subComment.subCommentId}
                 userId={subComment.userId}
                 userName={subComment.userName}
                 date={subComment.date}
@@ -228,7 +218,6 @@ const Comment = ({
                 commentText={subComment.commentText}
                 like={subComment.like}
                 likeCnt={subComment.likeCnt}
-                likeState={subComment.likeState}
                 isLast={subComment.isLast}
                 commentUpdated={commentUpdated}
                 setCommentUpdated={setCommentUpdated}

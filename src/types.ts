@@ -16,7 +16,6 @@ export type SubCommentType = {
     commentText: string | null
     like: string[]
     likeCnt: number
-    likeState: boolean
     isLast: boolean
 }
 
@@ -30,7 +29,6 @@ export type CommentType = {
     like: string[]
     likeCnt: number
     subComments: SubCommentType[]
-    likeState: boolean
 }
 
 export type ItemType = {

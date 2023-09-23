@@ -3,9 +3,12 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useAuth } from "../../utils/AuthContext"
 import { ImgUploadIcon } from "../../components/icon/Icon"
 import ImgInput from "../../components/imgInput"
+import * as Types from "../../types"
+import { fetchUpdate, fetchItem } from '../../apiHelper'
 
 const UpdateItem = () => {
-    const params = useParams()
+    const params = useParams() as Types.ParamsType
+    const { loginUser } = useAuth()
 
     const [title, setTitle] = useState("")
     const [image, setImage] = useState("")
@@ -16,7 +19,7 @@ const UpdateItem = () => {
 
     useEffect(() => {
         const getSingleItem = async () => {
-            const response = await fetch(`http://localhost:5050/item/${params.id}`)
+            const response = await fetchItem(params.id)
             const jsonResponse = await response.json()
 
             setTitle(jsonResponse.singleItem.title)
@@ -32,23 +35,18 @@ const UpdateItem = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
-            const response = await fetch(`http://localhost:5050/item/update/${params.id}`, {
-                method: "PUT",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                    "authorization": `Bearer ${localStorage.getItem("token")}`
-                },
-                body: JSON.stringify({
-                    title: title,
-                    image: image,
-                    mainBody: mainBody,
-                    userId: userId,
-                    email: loginUser?.email
-                })
-            })
-            console.log(loginUser?.email)
-            console.log(userId)
+
+            const email = loginUser?.email
+            const itemId = params.id
+
+            if (!email) {
+                alert("権限がありません")
+                return
+            }
+            const response = await fetchUpdate({title, image, mainBody, userId, email, itemId})
+            // console.log(loginUser?.email)
+            // console.log(userId)
+            
             const jsonData = await response.json()
             alert(jsonData.message)
 
@@ -65,9 +63,6 @@ const UpdateItem = () => {
         setPreviewUrl(url);
     };
 
-
-
-    const { loginUser } = useAuth()
 
     if (loginUser?.userId === userId) {
         return (

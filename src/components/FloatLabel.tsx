@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 import * as Types from "../types"
 
 function FloatLabel({ onBlurFunc, className, placeholder, name, type, value, onChange }: Types.FloatLabelType) {
@@ -12,7 +12,7 @@ function FloatLabel({ onBlurFunc, className, placeholder, name, type, value, onC
         }
     }
 
-    const labelClass = value || isFocused ? 'float-label active' : 'float-label';
+    const labelClass = value || isFocused ? 'float-label active' : 'float-label'
 
     return (
         <div>
@@ -32,4 +32,4 @@ function FloatLabel({ onBlurFunc, className, placeholder, name, type, value, onC
     );
 }
 
-export default FloatLabel;
+export default FloatLabel

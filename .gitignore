@@ -11,6 +11,10 @@
 # production
 /build
 
+#other
+/src/apiHelper.tsx
+/src/.env
+
 # misc
 .DS_Store
 .env.local

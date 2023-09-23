@@ -1,4 +1,5 @@
 // import { useAuth } from "../utils/AuthContext"
+import { fetchLike, fetchLikeComment, fetchLikeSubComment } from '../apiHelper'
 import * as Types from "../types"
 
 //投稿をいいねする
@@ -11,15 +12,8 @@ export const LikeController = ({ isLiked, setIsLiked, setLikes, params, userId }
         
         try {
             const action = isLiked ? 'unlike' : 'like'
-            const response = await fetch(`http://localhost:5050/item/${params.id}/${action}`, {
-                method: 'POST',
-                headers: {
-                'Authorization': `Bearer ${localStorage.getItem("token")}`,
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ userId })
-            });
-            // const data = await response.json();
+            const itemId = params.id
+            const response = await fetchLike({itemId, action, userId})
         
             // 失敗した時、UIを元に戻す
             if (response.status !== 200) {
@@ -48,26 +42,19 @@ export const LikeCmtController = ({isCmtLiked, setIsCmtLiked, setCmtLikes, userI
 
         try {
             const action = isCmtLiked ? "unlike" : "like"
-            const response = await fetch(`http://localhost:5050/comment/${commentId}/${action}`, {
-                method: 'POST',
-                headers: {
-                'Authorization': `Bearer ${localStorage.getItem("token")}`,
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ userId })
-            });
+            const response = await fetchLikeComment({commentId, userId, action})
 
             if (response.status !== 200) {
                 console.log("失敗")
                 setCmtLikes(prevLikes => isCmtLiked ? prevLikes + 1 : prevLikes - 1)
-                setIsCmtLiked(prevIsLiked => !prevIsLiked)
+                setIsCmtLiked(prevIsCmtLiked => !prevIsCmtLiked)
                 // console.log(`2: ${isCmtLiked}`)
             }
 
         } catch (error) {
             console.log("接続できませんでした")
             setCmtLikes(prevLikes => isCmtLiked ? prevLikes + 1 : prevLikes - 1)
-            setIsCmtLiked(prevIsLiked => !prevIsLiked)
+            setIsCmtLiked(prevIsCmtLiked => !prevIsCmtLiked)
         }
     }
     return handleCmtLike
@@ -83,25 +70,18 @@ export const LikeSbCmtController = ({isSbCmtLiked, setIsSbCmtLiked, setSbCmtLike
 
         try {
             const action = isSbCmtLiked ? "unlike" : "like"
-            const response = await fetch(`http://localhost:5050/comment/${commentId}/${subCommentId}/${action}`, {
-                method: 'POST',
-                headers: {
-                'Authorization': `Bearer ${localStorage.getItem("token")}`,
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ userId })
-            });
+            const response = await fetchLikeSubComment({commentId, subCommentId, userId, action})
 
             if (response.status !== 200) {
                 console.log("失敗")
                 setSbCmtLikes(prevLikes => isSbCmtLiked ? prevLikes + 1 : prevLikes - 1)
-                setIsSbCmtLiked(prevIsLiked => !prevIsLiked)
+                setIsSbCmtLiked(prevIsSbCmtLiked => !prevIsSbCmtLiked)
                 // console.log(`2: ${isCmtLiked}`)
             }
 
         } catch (error) {
             setSbCmtLikes(prevLikes => isSbCmtLiked ? prevLikes + 1 : prevLikes - 1)
-            setIsSbCmtLiked(prevIsLiked => !prevIsLiked)
+            setIsSbCmtLiked(prevIsSbCmtLiked => !prevIsSbCmtLiked)
         }
     }
     return handleSbCmtLike

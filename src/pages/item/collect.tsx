@@ -1,3 +1,4 @@
+import { fetchCollect } from '../../apiHelper'
 import * as Types from "../../types"
 
 export const CollectController = ({ isCollected, setIsCollected, setCollects, params, userId }: Types.CollectControllerType) => {
@@ -9,14 +10,8 @@ export const CollectController = ({ isCollected, setIsCollected, setCollects, pa
         
         try {
             const action = isCollected ? 'deCollect' : 'collect'
-            const response = await fetch(`http://localhost:5050/item/${params.id}/${action}`, {
-                method: 'POST',
-                headers: {
-                'Authorization': `Bearer ${localStorage.getItem("token")}`,
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ userId })
-            });
+            const itemId = params.id
+            const response = await fetchCollect({itemId, userId, action})
             // const data = await response.json();
         
             // 失敗した時、UIを元に戻す

@@ -1,20 +1,15 @@
 import { useNavigate } from "react-router-dom"
 import * as Types from "../../types"
+import { fetchDelete, fetchDeleteComment, fetchDeleteSubComment } from '../../apiHelper'
 
 export const useHandleDelete = () => {
     const navigate = useNavigate()
 
     return async ( params: Types.ParamsType ) => {    
         try {
-            const response = await fetch(`http://localhost:5050/item/delete/${params.id}`, {
-                method: "DELETE",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                    "authorization": `Bearer ${localStorage.getItem("token")}`
-                    //authorizationはバックエンドのauthというミドルウェアで使う
-                },
-            })
+            const itemId = params.id
+
+            const response = await fetchDelete(itemId)
             const jsonData = await response.json()
 
             if (!response.ok) {
@@ -32,15 +27,8 @@ export const useHandleDelete = () => {
 
 export const HandleDeleteComment = async ({ params, commentId, commentUpdated, setCommentUpdated }: Types.HandleDeleteCommentType) => {
     try {
-        const response = await fetch(`http://localhost:5050/item/${params.id}/comment/${commentId}/delete`, {
-            method: "DELETE",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "authorization": `Bearer ${localStorage.getItem("token")}`
-                //authorizationはバックエンドのauthというミドルウェアで使う
-            },
-        })
+        const itemId = params.id
+        const response = await fetchDeleteComment({itemId, commentId})
 
         const jsonData = await response.json()
 
@@ -58,15 +46,7 @@ export const HandleDeleteComment = async ({ params, commentId, commentUpdated, s
 
 export const HandleDeleteSubComment = async ({ commentId, subCommentId, commentUpdated, setCommentUpdated }: Types.HandleDeleteSubCommentType) => {
     try {
-        const response = await fetch(`http://localhost:5050/comment/${commentId}/${subCommentId}/delete`, {
-            method: "DELETE",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "authorization": `Bearer ${localStorage.getItem("token")}`
-                //authorizationはバックエンドのauthというミドルウェアで使う
-            },
-        })
+        const response = await fetchDeleteSubComment({commentId, subCommentId})
 
         const jsonData = await response.json()
 

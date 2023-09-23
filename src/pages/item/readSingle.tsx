@@ -10,6 +10,7 @@ import ButtonBar from "../../components/ButtonBar"
 import CommentsBlock from "../../components/Comment/CommentsBlock"
 import { FormatDate, FormatDatePro } from "../../components/FormartDate"
 import { useHandleDelete } from "./delete"
+import { fetchItem, fetchUser } from '../../apiHelper'
 
 
 const ReadSingle = () => {
@@ -28,6 +29,7 @@ const ReadSingle = () => {
         email: "",
         name: "",
         collect: 0,
+        like: [],
         comments:[{
             userId: "",
             userName: "",
@@ -37,7 +39,6 @@ const ReadSingle = () => {
             commentText: "",
             like: [],
             likeCnt: 0,
-            likeState: false,
             subComments:[{
                 userId: "",
                 userName: "",
@@ -48,11 +49,9 @@ const ReadSingle = () => {
                 commentText: "",
                 like: [],
                 likeCnt: 0,
-                likeState: false,
                 isLast: false
             }],
-        }],
-        like: []
+        }]
     })
 
     const [isLoading, setIsLoading] = useState(true);
@@ -85,14 +84,11 @@ const ReadSingle = () => {
         //　しかし、その時点で、ReadSingleは既にアンマウントされているため、警告が出る可能性がある
 
         const getSingleItem = async () => {
-
+            console.log("get")
             try {
-                const userId = localStorage.getItem("userId")
-                
-                const fetchItem = fetch(`http://localhost:5050/item/${params.id}`)
-                const fetchUser = userId ? fetch(`http://localhost:5050/user/readUser/${userId}`) : Promise.resolve(null);
+                const userId = loginUser?.userId || null
 
-                const [response, userResponse] = await Promise.all([fetchItem, fetchUser]);
+                const [response, userResponse] = await Promise.all([fetchItem(params.id), fetchUser(userId)])
                
                 if (userResponse?.ok) {
                     const jsonResponse_user = await userResponse.json()
@@ -102,7 +98,7 @@ const ReadSingle = () => {
                     }
                 }
                 else {
-                    alert("ユーザー情報を取得できませんでした")
+                    // alert("ユーザー情報を取得できませんでした")
                     //何か画面上に表示する
                 }
                 
@@ -136,7 +132,6 @@ const ReadSingle = () => {
                             commentText: comment.commentText,
                             like: comment.like,
                             likeCnt: comment.like.length,
-                            likeState: comment.like.includes(localStorage.getItem("userId") || ""),
                             subComments: comment.subComments?.map((subComment: Types.SubCommentType, index: number, arr: Types.SubCommentType[]) => ({
 
                                 date: FormatDatePro(new Date(subComment.date), "MDHM"),
@@ -148,15 +143,11 @@ const ReadSingle = () => {
                                 commentText: subComment.commentText,
                                 like: subComment.like,
                                 likeCnt: subComment.like.length,
-                                likeState: subComment.like.includes(localStorage.getItem("userId") || ""),
                                 isLast: index === arr.length - 1
 
                             }))
                         }))
                     })
-
-                    
-
 
                     setIsLoading(false)
                 }
@@ -172,6 +163,7 @@ const ReadSingle = () => {
         // クリーンアップ処理
         return () => {
             isMounted = false
+            setCommentUpdated(false)
         }
     },[params.id, commentUpdated, loginUser, singleItem._id])
     //params.idとcommentUpdatedが変わったらuseEffectが再度実行される

@@ -2,6 +2,7 @@ import { useState } from "react"
 import Comment from "./Comment"
 import { useAuth } from "../../utils/AuthContext"
 import { InputComment } from "./InputComment"
+import { fetchPostComment } from '../../apiHelper'
 import * as Types from "../../types"
 
 
@@ -23,18 +24,9 @@ const CommentsBlock = ({comments, params, commentUpdated, setCommentUpdated}:
     //コメント送信
     const handleCommentSubmit = async( sendText: string ) => {
         try {
-            const response = await fetch(`http://localhost:5050/item/${params.id}/comment`, {
-                method: "POST",
-                headers: { 
-                    "Accept": "application/json", 
-                    "Content-Type": "application/json",
-                    "authorization": `Bearer ${localStorage.getItem("token")}`
-                },
-                body: JSON.stringify({
-                    userId: localStorage.getItem("userId"),
-                    commentText: sendText,
-                })
-            })
+            const itemId = params.id
+
+            const response = await fetchPostComment({itemId, sendText})
 
             const jsonData = await response.json()
             alert(jsonData.message) 
@@ -71,9 +63,9 @@ const CommentsBlock = ({comments, params, commentUpdated, setCommentUpdated}:
             </div>
             
             <div className="commentBlock">
-                {comments.map((comment, index) => (
+                {comments.map((comment) => (
                     <Comment
-                        key={index}
+                        key={comment.commentId}
                         userId={comment.userId}
                         userName={comment.userName}
                         date={comment.date}
@@ -83,7 +75,6 @@ const CommentsBlock = ({comments, params, commentUpdated, setCommentUpdated}:
                         like={comment.like}
                         likeCnt={comment.likeCnt}
                         subComments={comment.subComments || null}
-                        likeState={comment.likeState}
                         commentUpdated={commentUpdated}
                         setCommentUpdated={setCommentUpdated}
                     />
