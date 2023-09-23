@@ -195,7 +195,7 @@ const Comment = ({
                         {/* ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */}
                     </div>
                 </div>
-                {subComments.length > 0 ? (<div className="mainLine"/>) : (<></>)}
+                {subComments.length > 0 || isTextAreaVisible ? (<div className="mainLine"/>) : (<></>)}
             </div>
             <InputSubComment
                 userAvatar={localStorage.getItem("avatar")}
@@ -204,7 +204,8 @@ const Comment = ({
                 setSendText={setSendText} 
                 isTextAreaVisible={isTextAreaVisible}
                 toggleTextArea={toggleTextArea}
-                handleCommentSubmit={handleCommentSubmit} 
+                handleCommentSubmit={handleCommentSubmit}
+                isSubCommentExist={subComments.length > 0}
             />
             {subComments && subComments.map((subComment) => (
                 <SubComment

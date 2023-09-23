@@ -49,7 +49,8 @@ const ImgInput = ({ className, text, setImage, onFileChange }: Types.ImgInputTyp
             data.append("cloud_name","dvs51igrz")
             const response= await uploadImage(data)
             const jsonData = await response.json()
-            setImage(jsonData.url)
+            const secureUrl = jsonData.url.replace('http://', 'https://')
+            setImage(secureUrl)
             setImgUploaded(true)
             alert("画像アップロード成功")
         }catch(err){

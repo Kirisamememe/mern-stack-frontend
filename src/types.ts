@@ -168,6 +168,7 @@ export type InputSubCommentType = {
     isTextAreaVisible: boolean
     // setTextAreaVisible: (newValue: boolean) => void
     toggleTextArea: (e?: React.MouseEvent) => void;
+    isSubCommentExist: boolean
     // isCommentButtonClicked: boolean
     // setIsCommentButtonClicked: (newValue: boolean) => void 
 }

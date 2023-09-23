@@ -67,7 +67,7 @@ const CreateItem = () => {
                         </label>
                     </div>
                     <div className="form-title">
-                        <input　style={{display: 'none'}} value={image} onChange={(e) => setTitle(e.target.value)} type="text" name="imageURL" placeholder="URL" required/>
+                        <input style={{display: 'none'}} value={image} onChange={(e) => setTitle(e.target.value)} type="text" name="imageURL" placeholder="URL" required/>
                         <input className="input-title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="title" placeholder="タイトル" required/>
                         <textarea value={mainBody} onChange={(e) => setMainBody(e.target.value)} name="mainBody" rows={15} placeholder="本文" required></textarea>
                     </div>

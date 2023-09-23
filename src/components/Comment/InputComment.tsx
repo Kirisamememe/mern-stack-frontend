@@ -4,7 +4,9 @@ import UserAvatar from "../UserAvatar"
 import * as Types from "../../types"
 
 
-export const InputSubComment = ({ userAvatar, userName, sendText, setSendText, handleCommentSubmit, isTextAreaVisible, toggleTextArea }: Types.InputSubCommentType) => {
+export const InputSubComment = ({ userAvatar, userName, sendText, setSendText, handleCommentSubmit, isTextAreaVisible, toggleTextArea, isSubCommentExist }: Types.InputSubCommentType) => {
+
+    const maskClass = isSubCommentExist ? "subLineMask" : "subLineNoMask"
 
     const handleSubmit = () => {
         handleCommentSubmit(sendText);
@@ -25,6 +27,7 @@ export const InputSubComment = ({ userAvatar, userName, sendText, setSendText, h
                                 <div className="nameText">{userName}</div>
                             </div>
                             <textarea
+                                name="subCommentText"
                                 value={sendText}
                                 onChange={(e) => setSendText(e.target.value)}
                                 placeholder="大変楽しく読ませていただきました"
@@ -39,10 +42,10 @@ export const InputSubComment = ({ userAvatar, userName, sendText, setSendText, h
                             
                         </div>
                     </div>
-                    <div className="subLineMask">
+                    <div className={maskClass}>
                         <div className="subLine"/>
                     </div>
-                    <div className="subLineToNext"/>
+                    <div className={isSubCommentExist ? "subLineToNext" : ""}/>
                 </div>
             )}
         </>
@@ -60,6 +63,7 @@ export const InputComment = ({sendText, setSendText, handleCommentSubmit}: Types
         <>
             <div id="commentInputBox" className="sendComment">
                 <textarea
+                    name="commentText"
                     value={sendText}
                     onChange={(e) => setSendText(e.target.value)}
                     placeholder="大変興味深い文章でした"

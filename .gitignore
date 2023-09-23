@@ -10,10 +10,15 @@
 
 # production
 /build
+/build_v0.2.2
+/build_v0.2.3
+/build_v0.2.4
+/build_v0.2.1
+/build_v02
 
 #other
 /src/apiHelper.tsx
-/src/.env
+.env
 
 # misc
 .DS_Store
