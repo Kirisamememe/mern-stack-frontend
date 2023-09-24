@@ -102,7 +102,7 @@ const Login = () => {
                     onChange={handleChange}
                     required
             />
-            <button>ログイン</button>
+            <button disabled={!isEmailValid}>ログイン</button>
             </form>
         </div>
     )

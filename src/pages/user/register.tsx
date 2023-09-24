@@ -15,40 +15,65 @@ const Register = () => {
     })
 
     const handleChange = (e: Types.E) => {
+        const { name, value } = e.target
+
         setNewUser({
             ...newUser,
             [e.target.name]: e.target.value
         })
+
+        if (isEmailTouched && name === 'email') {
+            setIsEmailValid(value.includes("@"))
+        }
+        if (isNameTouched && name === 'name') {
+            setIsNameValid(value.length < 12)
+        }
+        if (isPasswordTouched && name === 'password') {
+            const regex = /^[a-zA-Z0-9-_]+$/
+            const isValid = (6 < value.length && value.length < 20) && regex.test(value)
+            setIsPasswordValid(isValid)
+        }
+
     }
 
-    const navigate = useNavigate()
-    // const handleAvatarChange = (avatar: string) => {
-    //     setNewUser({
-    //         ...newUser,
-    //         avatar: avatar
-    //     });
-    // };
 
-    const [isEmailValid, setIsEmailValid] = useState(true);
-    const [isNameValid, setIsNameValid] = useState(true);
-    const [isPasswordValid, setIsPasswordValid] = useState(true);
+    
+    const navigate = useNavigate()
+
+    const [isEmailValid, setIsEmailValid] = useState(false)
+    const [isNameValid, setIsNameValid] = useState(false)
+    const [isPasswordValid, setIsPasswordValid] = useState(false)
+
+    const [isEmailTouched, setIsEmailTouched] = useState(false)
+    const [isNameTouched, setIsNameTouched] = useState(false)
+    const [isPasswordTouched, setIsPasswordTouched] = useState(false)
+
+
 
     const validateEmail = (event: React.FocusEvent<HTMLInputElement>) => {
+        setIsEmailTouched(true)
         const value = event.target.value
-        setIsEmailValid(value.includes("@") || value === "")
+        setIsEmailValid(value.includes("@"))
         //@を含むか、空になっている以外の場合は色を赤にする
     }
 
     const validateName = (event: React.FocusEvent<HTMLInputElement>) => {
+        setIsNameTouched(true)
         const value = event.target.value
-        setIsNameValid(value.length < 12 || value === "")
+        setIsNameValid(value.length < 12 && value.length > 0)
     }
 
     const validatePassword = (event: React.FocusEvent<HTMLInputElement>) => {
+        setIsPasswordTouched(true)
         const value = event.target.value
-        setIsPasswordValid((8 < value.length && value.length < 16) || value === "")
+        const regex = /^[a-zA-Z0-9-_]+$/
+        const isValid = (6 < value.length && value.length < 20) && regex.test(value)
+        setIsPasswordValid(isValid)
     }
     
+
+
+
 
     useEffect(() => {
         document.body.classList.add('register-background');
@@ -65,7 +90,9 @@ const Register = () => {
             
             const jsonResponse = await response.json()
             alert(jsonResponse.message)
-            navigate("/user/login")
+            if (response?.ok) {
+                navigate("/user/login")
+            }
         } catch (error) {
             alert("ユーザー登録失敗")
         }
@@ -77,7 +104,7 @@ const Register = () => {
             <form onSubmit={ handleSubmit }>
                 <FloatLabel 
                     name="name"
-                    className={isNameValid ? "inputFloat" : "inputFloatInvalid"}
+                    className={!isNameTouched || isNameValid ? "inputFloat" : "inputFloatInvalid"}
                     onBlurFunc={validateName}
                     type={"text"}
                     placeholder="ニックネーム" 
@@ -87,7 +114,7 @@ const Register = () => {
                 />
                 <FloatLabel 
                     name="email"
-                    className={isEmailValid ? "inputFloat" : "inputFloatInvalid"}
+                    className={!isEmailTouched || isEmailValid ? "inputFloat" : "inputFloatInvalid"}
                     onBlurFunc={validateEmail}
                     type={"email"}
                     placeholder="メールアドレス" 
@@ -97,10 +124,10 @@ const Register = () => {
                 />
                 <FloatLabel 
                     name="password"
-                    className={isPasswordValid ? "inputFloat" : "inputFloatInvalid"}
+                    className={!isPasswordTouched || isPasswordValid ? "inputFloat" : "inputFloatInvalid"}
                     onBlurFunc={validatePassword}
                     type={"password"}
-                    placeholder="パスワード" 
+                    placeholder="パスワード（6~20桁）" 
                     value={newUser.password}
                     onChange={handleChange}
                     required
@@ -119,7 +146,7 @@ const Register = () => {
                     <input value={newUser.avatar} onChange={(e) => handleAvatarChange(e.target.value)} type="text" name="avatar" placeholder="アイコンのURL"/>
                 </div> */}
                 
-            <button>登録</button>
+            <button disabled={!isEmailValid || !isNameValid || !isPasswordValid}>登録</button>
             </form>
         </div>
     )

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import * as Types from "../types"
 
-function FloatLabel({ onBlurFunc, className, placeholder, name, type, value, onChange }: Types.FloatLabelType) {
+const FloatLabel = ({ onBlurFunc, className, placeholder, name, type, value, onChange }: Types.FloatLabelType) => {
     const [isFocused, setIsFocused] = useState(false);
 
     const handleFocus = () => setIsFocused(true);

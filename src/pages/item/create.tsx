@@ -11,7 +11,7 @@ const CreateItem = () => {
     const [title, setTitle] = useState("")
     const [image, setImage] = useState("")
     const [mainBody, setMainBody] = useState("")
-    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true)
 
     const navigate = useNavigate();
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { useAuth } from "../../utils/AuthContext"
 import { ImgUploadIcon } from "../../components/icon/Icon"
+import Background from "../../components/Background"
 import ImgInput from "../../components/imgInput"
 import * as Types from "../../types"
 import { fetchUpdate, fetchItem } from '../../apiHelper'
@@ -14,6 +15,7 @@ const UpdateItem = () => {
     const [image, setImage] = useState("")
     const [mainBody, setMainBody] = useState("")
     const [userId, setUserId] = useState("")
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true)
 
     const navigate = useNavigate();
 
@@ -30,6 +32,17 @@ const UpdateItem = () => {
         getSingleItem()
     },[params.id])
     //params.idが変わったらuseEffectが再度実行される
+
+    useEffect(() => {
+
+        if (title && image && mainBody) {
+            setIsButtonDisabled(false)
+        }
+        else {
+            setIsButtonDisabled(true)
+        }
+
+    }, [title, image, mainBody])
     
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,8 +57,6 @@ const UpdateItem = () => {
                 return
             }
             const response = await fetchUpdate({title, image, mainBody, userId, email, itemId})
-            // console.log(loginUser?.email)
-            // console.log(userId)
             
             const jsonData = await response.json()
             alert(jsonData.message)
@@ -57,7 +68,7 @@ const UpdateItem = () => {
     }
 
 
-    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null)
 
     const handleFileChange = (url: string | null) => {
         setPreviewUrl(url);
@@ -70,26 +81,26 @@ const UpdateItem = () => {
                 <div className="form-container">
                     <form onSubmit={ handleSubmit }>
                         <div className="img-container">
-                            <label className={`${image !== null ? 'imgInputLabelActive' : 'imgInputLabel'}`} htmlFor="fileInput">
-                                <ImgInput className={""} text={<div className="svgBox" ><ImgUploadIcon/></div>} onFileChange={handleFileChange} setImage={setImage}/>
+                            <label className={`${previewUrl !== null ? 'imgInputLabelActive' : 'imgInputLabel'}`} htmlFor="fileInput">
+                                <ImgInput className={`${previewUrl && !image ? "imgInputAnimation" : ""}`} text={<div className="svgBox" ><ImgUploadIcon/></div>} onFileChange={handleFileChange} setImage={setImage}/>
                                 <div className="imgBox">
                                     
                                     <div className="imgBoxText">画像を選択</div>
-                                    <img src={image || previewUrl || ""} alt=""/>
+                                    <img src={previewUrl || image || ""} alt=""/>
                                 </div>
                                 
                             </label>
                         </div>
                         
                         <div className="form-title">
+                            <input style={{display: 'none'}} value={image} onChange={(e) => setTitle(e.target.value)} type="text" name="imageURL" placeholder="URL" required/>
                             <input className="input-title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="title" placeholder="アイテム名" required/>
                             <textarea value={mainBody} onChange={(e) => setMainBody(e.target.value)} name="mainBody" rows={15} placeholder="商品説明" required></textarea>
                         </div>
-                        <div className="img-container">
-                            <ImgInput className={""} text={<div></div>} setImage={setImage} onFileChange={handleFileChange}/>
-                        </div>
-                        <button>編集を完了する</button>
+                        
+                        <button type="submit" disabled={isButtonDisabled}>編集を完了する</button>
                     </form>
+                    <Background image={image}/>
                 </div>
             </div>
         )
