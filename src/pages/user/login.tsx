@@ -9,8 +9,8 @@ import { postUserLogin } from '../../apiHelper'
 
 
 const Login = () => {
-    const { setLoginUser } = useAuth();
-    const navigate = useNavigate();
+    const { setLoginUser } = useAuth()
+    const navigate = useNavigate()
 
     const [userInfo, setUserInfo] = useState({
         email: "",

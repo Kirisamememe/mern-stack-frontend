@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 import * as Types from "../../types"
 // import ImgInput from "../../components/imgInput"
 import FloatLabel from "../../components/FloatLabel"
@@ -19,6 +20,8 @@ const Register = () => {
             [e.target.name]: e.target.value
         })
     }
+
+    const navigate = useNavigate()
     // const handleAvatarChange = (avatar: string) => {
     //     setNewUser({
     //         ...newUser,
@@ -62,6 +65,7 @@ const Register = () => {
             
             const jsonResponse = await response.json()
             alert(jsonResponse.message)
+            navigate("/user/login")
         } catch (error) {
             alert("ユーザー登録失敗")
         }
