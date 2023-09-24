@@ -6,6 +6,18 @@ URL: https://whisper-wave.com/
 
 興味ある方は登録してテストに協力していただければ幸いです
 
+### ちなみに今ある投稿は全部AIで生成しました。人間が書いたわけではありません。
+
+# 次のバージョンについて
+
+### より安全性の高いアカウントシステム、SSO、CAPTCHAの実装など
+
+### マルチデバイスにおけるUIの最適化
+
+### マイページ機能の実装
+
+### ダークモードの実装
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
