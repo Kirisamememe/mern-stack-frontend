@@ -1,3 +1,11 @@
+# ようやくデプロイまで漕ぎ着けました
+
+URL: https://whisper-wave.com/
+
+招待コード（一回きり）：YCFk1ebiDCUnSxN
+
+興味ある方は登録してテストに協力していただければ幸いです
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
