@@ -9,11 +9,7 @@
 /coverage
 
 # production
-/build
-/build_v0.2.6
-/build_v0.2.7
-/build_v0.2.8
-/build_v0.2.9
+
 
 # Runtime data
 .env
