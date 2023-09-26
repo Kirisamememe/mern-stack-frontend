@@ -33,7 +33,6 @@ const Register = () => {
             const isValid = (6 < value.length && value.length < 20) && regex.test(value)
             setIsPasswordValid(isValid)
         }
-
     }
 
 
@@ -97,6 +96,8 @@ const Register = () => {
             alert("ユーザー登録失敗")
         }
     }
+
+    
 
     return (
         <div className="register-container">
