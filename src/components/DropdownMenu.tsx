@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import * as Types from "../types"
 
-function DropdownMenu({isOpen, menuItems}: Types.DropdownMenuType) {
+const DropdownMenu = ({isOpen, menuItems}: Types.DropdownMenuType) => {
     return (
         <div className={`dropdown ${isOpen ? 'show' : ''}`}>{/* trueの場合、dropdownとshow二つのスタイルが適用される */}
             <div className="menu">
@@ -12,7 +12,7 @@ function DropdownMenu({isOpen, menuItems}: Types.DropdownMenuType) {
                 ))}
             </div>
         </div>
-    );
+    )
 }
 
 export default DropdownMenu;
