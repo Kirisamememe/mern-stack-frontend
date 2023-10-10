@@ -150,7 +150,7 @@ const MyPage = () => {
                     </div>
                 </div>
                 {!hideRight ? (<div className="myPageContainer_right">
-                    {userProfile.collect.length > 0 ? <ExtraInfoCollects collects={collectsArr}/> : <></>}
+                    {userProfile.collect.length > 0 && params.id === localStorage.getItem("userId") ? <ExtraInfoCollects collects={collectsArr}/> : <></>}
                     <ExtraInfoFriends friends={userProfile.follow}/>
                 </div>) : (<></>)}
             </div>

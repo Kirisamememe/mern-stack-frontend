@@ -15,15 +15,20 @@ const MyPageProfile = ({ userId, avatar, name, signature, itemCnt, coleCnt, foll
 
     const handleFollow = () => {
         setIsFollowing(!isFollowing)
+        setIsHovered(false)
         //FollowController()()
     }
 
-    const handleMouseEnter = () => {
-        setIsHovered(true)
+    const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (event.type !== 'touchstart') {
+            setIsHovered(true)
+        }
     }
     
-    const handleMouseLeave = () => {
-        setIsHovered(false)
+    const handleMouseLeave = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (event.type !== 'touchend') {
+            setIsHovered(false)
+        }
     }
 
     useEffect(() => {

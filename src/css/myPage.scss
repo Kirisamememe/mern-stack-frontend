@@ -107,7 +107,8 @@
 
                     @include for_mobile($mobile_breakpoint){
                         font-size: 1.4rem;
-                        padding: 0.9rem 2rem;
+                        padding: 1rem 2rem;
+                        border: 0.1rem solid rgba($color: #ffffff, $alpha: 0);
                     }
                 }
 
