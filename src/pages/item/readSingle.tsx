@@ -19,6 +19,7 @@ const ReadSingle = () => {
 
     const [commentUpdated, setCommentUpdated] = useState(false)
     const [isCollected, setIsCollected] = useState(false)
+    // const [isLoaded, setIsLoaded] = useState(false)
 
     const [singleItem, setSingleItem] = useState<Types.ItemType>({
         _id: "",
@@ -54,22 +55,22 @@ const ReadSingle = () => {
         }]
     })
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true)
 
-    // const navigate = useNavigate();
+    // const navigate = useNavigate()
 
     //ここからは削除するための処理
-    const [showPopup, setShowPopup] = useState(false);
+    const [showPopup, setShowPopup] = useState(false)
 
     //OK出たら削除
     const onConfirm = () => {
         handleDelete(params)
-        setShowPopup(false);
-    };
+        setShowPopup(false)
+    }
 
     const onCancel = () => {
-        setShowPopup(false);
-    };
+        setShowPopup(false)
+    }
 
     //削除を実行するカスタムフックを実行するための関数
     const handleDelete = useHandleDelete()
@@ -84,16 +85,17 @@ const ReadSingle = () => {
         //　しかし、その時点で、ReadSingleは既にアンマウントされているため、警告が出る可能性がある
 
         const getSingleItem = async () => {
-            console.log("get")
+            // console.log("get")
             try {
                 const userId = loginUser?.userId || null
 
-                const [response, userResponse] = await Promise.all([fetchItem(params.id), fetchUser(userId)])
+                const [response, userResponse] = await Promise.all([fetchItem(params.id), fetchUser(userId,["collect"])])
                
                 if (userResponse?.ok) {
                     const jsonResponse_user = await userResponse.json()
+                    console.log(jsonResponse_user)
 
-                    if (jsonResponse_user.collect.some((obj: {itemId: string}) => obj.itemId === singleItem._id)) {
+                    if (jsonResponse_user.userData.collect.some((obj: {itemId: string}) => obj.itemId === singleItem._id)) {
                         setIsCollected(true)
                     }
                 }
@@ -171,13 +173,13 @@ const ReadSingle = () => {
 
 
     const paragraphs = singleItem.mainBody.split('\n').map((paragraph, index) => (
-        <p key={index} className="paragraph-spacing">{paragraph}</p>
-    ));
+        <p key={index} className="paragraph_spacing">{paragraph}</p>
+    ))
 
     
 
     return (
-        <div>
+        <>
             {!isLoading &&
             <>
             {/* ここからはポップアップ　*/}
@@ -188,7 +190,7 @@ const ReadSingle = () => {
                 noText="いいえ"
                 />
             )}
-            <div className="itemBody">
+            <div className="itemBody fadeIn">
                 <Contents singleItem={singleItem} FormatDate={FormatDate} paragraphs={paragraphs}/>
                 <ButtonBar
                     likeCnt={singleItem.like.length}
@@ -210,7 +212,7 @@ const ReadSingle = () => {
             {loginUser?.email === singleItem.email ? (<FloatButton params={params} setShowPopup={setShowPopup}/>) : (null)}
             <Background image={singleItem.image}/>
             </>}
-        </div>
+        </>
     )    
 }
 

@@ -2,9 +2,9 @@ import { useState } from "react"
 import * as Types from "../types"
 
 const FloatLabel = ({ onBlurFunc, className, placeholder, name, type, value, onChange }: Types.FloatLabelType) => {
-    const [isFocused, setIsFocused] = useState(false);
+    const [isFocused, setIsFocused] = useState(false)
 
-    const handleFocus = () => setIsFocused(true);
+    const handleFocus = () => setIsFocused(true)
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         setIsFocused(false)
         if (onBlurFunc) {
@@ -12,11 +12,11 @@ const FloatLabel = ({ onBlurFunc, className, placeholder, name, type, value, onC
         }
     }
 
-    const labelClass = value || isFocused ? 'float-label active' : 'float-label'
+    const labelClass = value || isFocused ? 'float_label active' : 'float_label'
 
     return (
         <div>
-            <div className="input-container">
+            <div className="input_container">
                 <input
                     type={type} 
                     name={name}
@@ -29,7 +29,7 @@ const FloatLabel = ({ onBlurFunc, className, placeholder, name, type, value, onC
                 <label className={labelClass}>{placeholder}</label>
             </div>
         </div>
-    );
+    )
 }
 
 export default FloatLabel

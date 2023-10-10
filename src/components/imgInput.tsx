@@ -8,17 +8,17 @@ const ImgInput = ({ className, text, setImage, onFileChange }: Types.ImgInputTyp
     const [imgUploaded, setImgUploaded] = useState(false)
 
     useEffect(() => {
-        let url: string | null = null;
+        let url: string | null = null
         if (imageFile) {
-            url = URL.createObjectURL(imageFile);
-            setPreviewUrl(url);
+            url = URL.createObjectURL(imageFile)
+            setPreviewUrl(url)
         }
         return () => {
             if (url) {
-                URL.revokeObjectURL(url);
+                URL.revokeObjectURL(url)
             }
-        };
-    }, [imageFile]);
+        }
+    }, [imageFile])
 
     useEffect(() => {
         if (onFileChange) {
@@ -27,20 +27,20 @@ const ImgInput = ({ className, text, setImage, onFileChange }: Types.ImgInputTyp
     }, [previewUrl, onFileChange])
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const files = e.target.files;
+        const files = e.target.files
         if (files) {
             setImgUploaded(false)
             setImage("")
-            setImageFile(files[0]);
+            setImageFile(files[0])
         } else {
-            setImageFile(null);
+            setImageFile(null)
         }
     }
 
 
     
     const handleClick = async() => {
-        if (!imageFile) return;
+        if (!imageFile) return
 
         try{
             const data = new FormData()
@@ -60,7 +60,7 @@ const ImgInput = ({ className, text, setImage, onFileChange }: Types.ImgInputTyp
 
 
     return (
-        <div className="img-input">
+        <div className="img_input">
             <input id="fileInput" type="file" style={{display: 'none'}} onChange={handleFileChange} accept="image/png, image/jpg"/>
             <button className={className} type="button" onClick={handleClick} disabled={!imageFile || imgUploaded}>{text}</button>
         </div>

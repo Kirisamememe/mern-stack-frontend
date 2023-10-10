@@ -1,8 +1,11 @@
-.menu-block {
+//@import 'variables';
+//@import 'mixins';
+
+.menu_block {
     position: relative;
 }
 
-.menu-block:hover .dropdown{
+.menu_block:hover .dropdown{
     display: block;
     opacity: 1;
 }
@@ -45,7 +48,7 @@
 .menuItem {
     padding: 1rem 2rem;
     background-color: #fff;
-    color: var(--G1, #2A2933);
+    color: $G0;
     text-align: left;
     font-size: 1.6rem;
     cursor: pointer;
@@ -69,7 +72,7 @@
     z-index: -1;
     
     border-radius: 0.4rem;
-    background-color: var(--Brand, #5741E7);
+    background-color: $Brand;
 }
 
 .menuItem:last-child {

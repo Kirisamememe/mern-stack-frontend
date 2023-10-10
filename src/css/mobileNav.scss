@@ -1,0 +1,55 @@
+//@import 'variables';
+//@import 'mixins';
+
+.mobileNav {
+    display: flex;
+    margin: 0 1.6rem;
+    padding: 0 1.4rem;
+    // width: 100%;
+    width: calc(100% - 3.2rem);
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    bottom: 3.7rem;
+
+    border-radius: 5rem;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 4px 12px 0px rgba(28, 26, 88, 0.14);
+    // backdrop-filter: blur(15px);
+    z-index: 5;
+
+    transition: all 0.3s ease-in;
+
+    .tab {
+        display: flex;
+        position: relative;
+        height: 5.6rem;
+        justify-content: center;
+        align-items: center;
+        flex: 1 0 0;
+
+        -webkit-tap-highlight-color: transparent;
+
+        .post {
+            display: flex;
+            width: 5.8rem;
+            height: 5.8rem;
+            justify-content: center;
+            align-items: center;
+
+            position: absolute;
+            left: 1.85rem;
+            top: -1.4rem;
+
+            border-radius: 10rem;
+            background: $BrandGd2;
+            box-shadow: 0px 4px 10px -3px rgba(71, 48, 229, 0.56);
+        }
+    }
+}
+
+.navHide {
+    opacity: 0.5;
+    transform: translateY(200%);
+}

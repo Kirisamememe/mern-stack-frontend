@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
-import jwt_decode from "jwt-decode";
-import { useAuth } from "../../utils/AuthContext";
+import { useNavigate } from "react-router-dom"
+import jwt_decode from "jwt-decode"
+import { useAuth } from "../../utils/AuthContext"
 import FloatLabel from "../../components/FloatLabel"
 import * as Types from "../../types"
 import { postUserLogin } from '../../apiHelper'
@@ -24,15 +24,15 @@ const Login = () => {
         })
     }
 
-    const [isEmailValid, setIsEmailValid] = useState(true);
+    const [isEmailValid, setIsEmailValid] = useState(true)
     
 
     //背景色を管理
     useEffect(() => {
-        document.body.classList.add('register-background');
+        document.body.classList.add('register_background')
         return () => {
-            document.body.classList.remove('register-background');
-        };
+            document.body.classList.remove('register_background')
+        }
     }, [])
 
     const validateEmail = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -52,7 +52,7 @@ const Login = () => {
 
             //ユーザー情報が正しい場合
             if (response.status === 200) {
-                const decoded = jwt_decode(jsonResponse.token) as { email: string };
+                const decoded = jwt_decode(jsonResponse.token) as { email: string }
 
                 //ログインしたということをAuthContextを通してアプリ全体で共有する
                 //※setLoginUserはAuthContextで管理されている
@@ -60,7 +60,7 @@ const Login = () => {
                     email: decoded.email,
                     avatar: jsonResponse.avatar,
                     userId: jsonResponse.userId
-                });
+                })
 
                 localStorage.setItem("token", jsonResponse.token)
                 localStorage.setItem("avatar", jsonResponse.avatar)
@@ -80,8 +80,8 @@ const Login = () => {
     }
     
     return (
-        <div className="register-container">
-            <h1 className="register-title">ログイン</h1>
+        <div className="register_container">
+            <h1 className="register_title">ログイン</h1>
             <form onSubmit={ handleSubmit }>
             <FloatLabel 
                     name="email"

@@ -1,12 +1,16 @@
+//@import 'variables';
+//@import 'mixins';
+
 button{
     font-size: 1.6rem;
     color: #fff;
     padding: 1rem;
+    line-height: 100%;
     border: none;
-    border-radius: 5rem;
+    border-radius: 20rem;
     cursor: pointer;
     transition: all 0.3s;
-    background: var(--BrandGd, linear-gradient(96deg, #4C36E0 5.31%, #6852F2 100%));
+    background: $BrandGd;
 }
 
 button:hover{
@@ -20,13 +24,13 @@ button:disabled{
     transition: all 0.3s;
 }
 
-.button-sub {
+.button_sub {
 	min-width: 60px;
 	padding: 1.4rem 1.6rem;
     border-radius: 10rem;
     justify-content: center;
     align-items: center;
-	background-color: var(--BrandGd, linear-gradient(96deg, #4C36E0 5.31%, #6852F2 100%));
+	background-color: $BrandGd;
 
 	text-align: center;
 	line-height: 100%;
@@ -35,13 +39,13 @@ button:disabled{
     font-weight: 600;
     transition: all 0.3s;
 }
-.button-sub:hover {
+.button_sub:hover {
     opacity: 0.8;
     transition: all 0.3s;
 }
 
-.button-confirm{
-    background: var(--BrandGd, linear-gradient(96deg, #4C36E0 5.31%, #6852F2 100%));
+.button_confirm{
+    background: $BrandGd;
     font-size: 1.6rem;
     color: #fff;
     padding: 0.6rem;
@@ -52,7 +56,7 @@ button:disabled{
     transition: all 0.3s;
 }
 
-.button-cancel{
+.button_cancel{
     background: #000000;
     font-size: 1.6rem;
     color: #fff;
@@ -64,7 +68,7 @@ button:disabled{
     transition: all 0.3s;
 }
 
-.button-caution{
+.button_caution{
     background: hsla(0, 82%, 51%, 0.1);
     font-size: 1.6rem;
     color: hsl(349, 88%, 54%);
@@ -75,7 +79,7 @@ button:disabled{
     transition: all 0.3s;
 }
 
-.button-caution:hover {
+.button_caution:hover {
     opacity: 1;
     background: hsl(349, 88%, 54%);
     color: #fff;
@@ -85,13 +89,13 @@ button:disabled{
 
 /* header * li a{ } */
 
-.button-main {
+.button_main {
     min-width: 8rem;
 	padding: 1.2rem 2.4rem;
     border-radius: 10rem;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(283deg, #4C36E0 10.35%, #6852F2 78.8%);
+    background: $BrandGd;
     box-shadow: 0px 3px 6px 0px rgba(89, 67, 233, 0.20);
 
 	text-align: center;
@@ -103,7 +107,7 @@ button:disabled{
     transition: all 0.3s;
 }
 
-.button-main:hover {
+.button_main:hover {
     opacity: 0.8;
     transition: all 0.3s;
 }
@@ -115,7 +119,7 @@ button.sub {
 
 
 
-.fixed-buttons {
+.fixed_buttons {
     position: fixed;
     bottom: calc(50% - 45%); /* 50%がビューポート中央、-100pxで下に移動 */
     right: calc(50% - 480px);  /* 50%がビューポート中央、-100pxで右に移動 */
@@ -126,7 +130,7 @@ button.sub {
     gap: 2.4rem;
 }
 
-.circleButton-edit {
+.circleButton_edit {
     display: flex;
     width: 6rem;
     height: 6rem;
@@ -134,16 +138,16 @@ button.sub {
     align-items: center;
 
     border-radius: 5rem;
-    background: var(--BrandGd, linear-gradient(96deg, #4C36E0 5.31%, #6852F2 100%));
+    background: $BrandGd;
     transition: all 0.3s;
 }
 
-.circleButton-edit:hover {
+.circleButton_edit:hover {
     opacity: 0.8;
     transition: all 0.3s;
 }
 
-.circleButton-delete {
+.circleButton_delete {
     display: flex;
     width: 6rem;
     height: 6rem;
@@ -155,122 +159,8 @@ button.sub {
     transition: all 0.3s;
 }
 
-.circleButton-delete:hover {
+.circleButton_delete:hover {
     opacity: 1;
     background: rgba(241, 75, 86, 0.15);
-    transition: all 0.3s;
-}
-
-
-.buttonBar {
-    display: flex;
-    width: 68rem;
-    padding: 0rem 2rem;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 6.4rem;
-}
-
-.buttonBar .buttonBox {
-    display: flex;
-    padding: 0.8rem;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-
-    border-radius: 5rem;
-    background: var(--GO6, rgba(66, 62, 89, 0.06));
-    transition: all 0.3s;
-}
-
-.buttonBar .buttonBoxLiked {
-    display: flex;
-    padding: 0.8rem;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-
-    border-radius: 5rem;
-    background: var(--Brand, #5741E7);
-    transition: all 0.3s;
-}
-
-.buttonBar .buttonBoxCollected {
-    display: flex;
-    padding: 0.8rem;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-
-    border-radius: 5rem;
-    background: linear-gradient(148deg, #FFDF41 7.68%, #FFB114 90.53%);
-    transition: all 0.3s;
-}
-
-.buttonBar .buttonDefault {
-    display: flex;
-    padding: 1.2rem 1rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    border-radius: 5rem;
-
-    background: hsla(0, 0%, 0%, 0);
-    /* transition: all 0.3s; */
-}
-
-.buttonBar .buttonDefault:hover .buttonBox {
-    opacity: 1;
-    background: var(--BrHover, rgba(87, 65, 231, 0.10));
-    /* transition: all 0.3s; */
-}
-
-.buttonBar .buttonDefault:hover svg path {
-    fill: var(--Brand, #5741E7);
-    fill-opacity: 1;
-    transition: all 0.3s;
-}
-
-.buttonBar .buttonLiked {
-    display: flex;
-    padding: 1.2rem 1rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    border-radius: 5rem;
-
-    background: hsla(0, 0%, 0%, 0);
-    transition: all 0.3s;
-}
-
-.buttonBar .buttonLiked:hover {
-    opacity: 1;
-    transition: all 0.3s;
-}
-
-
-.buttonBar .buttonCollected {
-    display: flex;
-    padding: 1.2rem 1rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    border-radius: 5rem;
-
-    background: hsla(0, 0%, 0%, 0);
-    transition: all 0.3s;
-}
-
-.buttonBar .buttonCollected:hover {
-    opacity: 1;
-    transition: all 0.3s;
-}
-
-
-.buttonBar .buttonCollected:hover svg path{
-    opacity: 1;
     transition: all 0.3s;
 }

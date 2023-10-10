@@ -1,0 +1,175 @@
+//@import 'variables';
+//@import 'mixins';
+
+.buttonBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7.2rem;
+
+    margin: auto;
+    width: 100%;
+    max-width: 68rem;
+
+    @include for_mobile(720px){
+        gap: 4.8rem;
+    }
+    @include for_mobile(500px){
+        gap: 2.4rem;
+    }
+    @include for_mobile(390px){
+        gap: 1.6rem;
+    }
+
+    //Default
+    .roundButton {
+        display: flex;
+        padding: 1.2rem 0rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 5rem;
+
+        -webkit-tap-highlight-color: transparent;
+    
+        background: hsla(0, 0%, 0%, 0);
+        /* transition: all 0.3s; */
+
+        .iconBox {
+            display: flex;
+            padding: 0.8rem;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        
+            border-radius: 5rem;
+            background: $GO6;
+            transition: all 0.3s;
+        }
+
+        &:hover {
+            svg path {
+                fill: $Brand;
+                fill-opacity: 1;
+                transition: all 0.3s;
+            }
+
+            .iconBox {
+                opacity: 1;
+                background: var(--BrHover, rgba(87, 65, 231, 0.10));
+                /* transition: all 0.3s; */
+            }
+        }
+    }
+
+    //Like
+    .roundButton_Liked {
+        display: flex;
+        padding: 1.2rem 0rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 5rem;
+
+        -webkit-tap-highlight-color: transparent;
+    
+        background: hsla(0, 0%, 0%, 0);
+        transition: all 0.3s;
+
+        .iconBox_Liked {
+            display: flex;
+            padding: 0.8rem;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        
+            border-radius: 5rem;
+            background: $Brand;
+            transition: all 0.3s;
+        }
+
+        &:hover {
+            opacity: 0.85;
+            transition: all 0.3s;
+        }
+    }
+
+
+    //Collect
+    .roundButton_Collected {
+        display: flex;
+        padding: 1.2rem 0rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 5rem;
+
+        -webkit-tap-highlight-color: transparent;
+    
+        background: hsla(0, 0%, 0%, 0);
+        transition: all 0.3s;
+
+        .iconBox_Collected {
+            display: flex;
+            padding: 0.8rem;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        
+            border-radius: 5rem;
+            background: linear-gradient(148deg, #FFDF41 7.68%, #FFB114 90.53%);
+            transition: all 0.3s;
+        
+            &:hover {
+                opacity: 1;
+                transition: all 0.3s;
+            }
+        }
+
+        &:hover {
+            opacity: 0.8;
+            transition: all 0.3s;
+
+            svg path{
+                opacity: 1;
+                transition: all 0.3s;
+            }
+        }
+    }
+}
+
+.buttonBarText {
+    width: 7rem;
+
+    color: $G0;
+    text-align: center;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 1.4rem */
+}
+
+.buttonBarTextActive {
+    width: 7rem;
+    
+    color: $Brand;
+    text-align: center;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%; /* 1.4rem */
+}
+
+.buttonBarCollectTextActive {
+    width: 7rem;
+
+    color: $G0;
+    text-align: center;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%; /* 1.4rem */
+}

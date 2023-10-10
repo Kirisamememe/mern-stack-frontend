@@ -2,12 +2,10 @@ import * as Types from "../types"
 
 const Contents = ({singleItem, FormatDate, paragraphs}: Types.ContentsType) => {
     return (
-        <div className="grid-container-si">
-            <div>
-                {/* これはヘッダー画像　*/}
-                {singleItem.image && <img className="headImg" src={singleItem.image} alt="item" />}
-            </div>
-            <div className="grid-container-si.box">
+        <div className="content_container">
+            {/* これはヘッダー画像　*/}
+            {singleItem.image && <img className="headImg" src={singleItem.image} alt="item" />}
+            <div className="content_text">
                 {/* タイトルと本文　*/}
                 <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4.2rem",}}>
                     <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2rem", alignSelf: "stretch"}}>
@@ -20,7 +18,7 @@ const Contents = ({singleItem, FormatDate, paragraphs}: Types.ContentsType) => {
                             <h2>{FormatDate(new Date(singleItem.date))}</h2>
                         </div>
                     </div>
-                    <div className="white-space-pre-line">
+                    <div className="white_space_pre_line">
                         {paragraphs}
                     </div>
                 </div>
@@ -29,4 +27,4 @@ const Contents = ({singleItem, FormatDate, paragraphs}: Types.ContentsType) => {
     )
 }
 
-export default Contents;
+export default Contents

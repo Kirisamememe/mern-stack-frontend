@@ -28,9 +28,9 @@ export const LikeController = ({ isLiked, setIsLiked, setLikes, params, userId }
             // console.log(`3: ${isLiked}`)
             console.error('Like failed', error)
         }
-    };
-    return handleLike;
-};
+    }
+    return handleLike
+}
 
 
 //コメントをいいねする

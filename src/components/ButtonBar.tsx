@@ -22,18 +22,18 @@ const ButtonBar = ({ likeCnt, commentCnt, collectCnt, liked, params, userId, isC
     const onConfirm = () => {
         setShowLoginPopup(false)
         navigate("/user/login")
-    };
+    }
 
     const onCancel = () => {
         setShowLoginPopup(false)
-    };
+    }
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
     //いいね操作関連
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    const [isLiked, setIsLiked] = useState(liked);
-    const [likes, setLikes] = useState(likeCnt);
+    const [isLiked, setIsLiked] = useState(liked)
+    const [likes, setLikes] = useState(likeCnt)
     
     const likeTextClass = isLiked ? "buttonBarTextActive" : "buttonBarText"
 
@@ -53,7 +53,7 @@ const ButtonBar = ({ likeCnt, commentCnt, collectCnt, liked, params, userId, isC
         else {
             setShowLoginPopup(true)
         }
-    };
+    }
     // console.log(likeClass)
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
@@ -76,8 +76,8 @@ const ButtonBar = ({ likeCnt, commentCnt, collectCnt, liked, params, userId, isC
 
     //コレクト操作関連
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    // const [isCollected, setIsCollected] = useState(liked);
-    const [collects, setCollects] = useState(collectCnt);
+    // const [isCollected, setIsCollected] = useState(liked)
+    const [collects, setCollects] = useState(collectCnt)
     
     const collectTextClass = isCollected ? "buttonBarCollectTextActive" : "buttonBarText"
 
@@ -134,32 +134,28 @@ const ButtonBar = ({ likeCnt, commentCnt, collectCnt, liked, params, userId, isC
                     onConfirm={onConfirm} onCancel={onCancel} />
             )}
             {/* いいねボタン */}
-            {<button id="like" className={`${isLiked ? 'buttonLiked' : 'buttonDefault'}`} onClick={handleLike}>
+            {<button id="like" className={`${isLiked ? 'roundButton_Liked' : 'roundButton'}`} onClick={handleLike}>
                 <LikeIcon36 isLiked={isLiked} animate={likeAnimate} />
                 {likes && likes > 0 ? <div className={`${likeTextClass}`}>{`${likes}`}</div> : <div className={`${likeTextClass}`}>いいね</div>}
             </button>}
 
             {/* コメントボタン */}
-            <button className="buttonDefault" onClick={handleComment}>
-                <div className="buttonBox">
-                    <CommentIcon36/>
-                </div>
+            <button className="roundButton" onClick={handleComment}>
+                <CommentIcon36/>
                 {commentCnt && commentCnt > 0 ? <div className="buttonBarText">{`${commentCnt}`}</div> : <div className="buttonBarText">コメント</div>}
             </button>
             
 
             {/* コレクトボタン */}
-            <button className={`${isCollected ? 'buttonCollected' : 'buttonDefault'}`} onClick={handleCollect}>
+            <button className={`${isCollected ? 'roundButton_Collected' : 'roundButton'}`} onClick={handleCollect}>
                 <CollectIcon36 isCollected={isCollected} animate={collectAnimate}/>
                 {collects && collects > 0 ? <div className={`${collectTextClass}`}>{`${collects}`}</div> : <div className={`${collectTextClass}`}>コレクト</div>}
             </button>
             
             {/* シェアボタン */}
-            <button className="buttonDefault" id="share" onClick={handleShare}>
+            <button className="roundButton" id="share" onClick={handleShare}>
                 {/* {showSharePopup && (null)} */}
-                <div className="buttonBox">
-                    <ShareIcon36/>
-                </div>
+                <ShareIcon36/>
                 <div className="buttonBarText">シェア</div>
             </button>
         </div>

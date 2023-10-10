@@ -1,13 +1,16 @@
+//@import 'variables';
+//@import 'mixins';
+
 /* Delete Item */
-.delete-page * img{
+.delete_page * img{
     border-radius: 1rem;
     width: 60%;
 }
 
-.delete-page * h1{
+.delete_page * h1{
     margin-bottom: 1.5rem;
 }
 
-.delete-page * h2{
+.delete_page * h2{
     margin: 1rem 0;
 }

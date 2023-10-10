@@ -1,5 +1,8 @@
+//@import 'variables';
+//@import 'mixins';
+
 /* ポップアップの背景を暗くするスタイル */
-.popup-background {
+.popup_background {
     position: fixed;
     top: 0;
     left: 0;
@@ -25,7 +28,7 @@
     animation: slideDown 0.3s ease-in-out;
 }
 
-.popup-buttonBlock {
+.popup_buttonBlock {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;

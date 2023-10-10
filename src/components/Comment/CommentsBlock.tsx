@@ -19,7 +19,7 @@ const CommentsBlock = ({comments, params, commentUpdated, setCommentUpdated}:
 
     //コメント送信関連
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    const [sendText, setSendText] = useState('');
+    const [sendText, setSendText] = useState('')
 
     //コメント送信
     const handleCommentSubmit = async( sendText: string ) => {
@@ -36,7 +36,7 @@ const CommentsBlock = ({comments, params, commentUpdated, setCommentUpdated}:
             alert("コメント投稿失敗")
             console.log(error)
         }
-    };
+    }
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
@@ -57,7 +57,7 @@ const CommentsBlock = ({comments, params, commentUpdated, setCommentUpdated}:
             <>
             <div className="titleBox">
                 <svg xmlns="http://www.w3.org/2000/svg" width="7" height="18" viewBox="0 0 7 18" fill="none">
-                    <path d="M2 0H7L5 18H0L2 0Z" fill="#5741E7"/>
+                    <path d="M2 0H7L5 18H0L2 0Z" fill="#6A55F3"/>
                 </svg>
                 <div className="commentTitle">コメント</div>
             </div>

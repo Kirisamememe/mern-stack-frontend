@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import * as Types from "../../types"
 // import ImgInput from "../../components/imgInput"
 import FloatLabel from "../../components/FloatLabel"
@@ -75,10 +75,10 @@ const Register = () => {
 
 
     useEffect(() => {
-        document.body.classList.add('register-background');
+        document.body.classList.add('register_background')
         return () => {
-            document.body.classList.remove('register-background');
-        };
+            document.body.classList.remove('register_background')
+        }
     }, [])
     
 
@@ -93,15 +93,15 @@ const Register = () => {
                 navigate("/user/login")
             }
         } catch (error) {
-            alert("ユーザー登録失敗")
+            alert("リクエストを送信できませんでした")
         }
     }
 
     
 
     return (
-        <div className="register-container">
-            <h1 className="register-title">ユーザー登録</h1>
+        <div className="register_container">
+            <h1 className="register_title">ユーザー登録</h1>
             <form onSubmit={ handleSubmit }>
                 <FloatLabel 
                     name="name"
@@ -142,7 +142,7 @@ const Register = () => {
                     onChange={handleChange}
                     required
                 />
-                {/* <div className="img-container">
+                {/* <div className="img_container">
                     <ImgInput setImage={handleAvatarChange}/>
                     <input value={newUser.avatar} onChange={(e) => handleAvatarChange(e.target.value)} type="text" name="avatar" placeholder="アイコンのURL"/>
                 </div> */}

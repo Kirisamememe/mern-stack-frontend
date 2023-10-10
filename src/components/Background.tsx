@@ -1,12 +1,12 @@
 const Background = ({ image }: {image: string}) => {
     return (
-        <div>
+        <>
             {/* ここからは背景画像　*/}
-            <div className="background-image-container">
-                <div className="background-image-gradient"></div>
+            <div className="background_image_container">
+                <div className="background_image_gradient" />
                 {image && <img src={image} alt="item" />}
             </div>
-        </div>
+        </>
     )
 }
 

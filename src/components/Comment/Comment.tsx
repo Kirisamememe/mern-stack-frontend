@@ -34,32 +34,32 @@ const Comment = ({
     const navigate = useNavigate()
 
     //  「ログインしますか」のポップアップを呼び出す
-    const [showLoginPopup, setShowLoginPopup] = useState(false);
+    const [showLoginPopup, setShowLoginPopup] = useState(false)
     
     const onConfirm_login = () => {
         setShowLoginPopup(false)
         navigate("/user/login")
-    };
+    }
 
     const onCancel_login = () => {
         setShowLoginPopup(false)
-    };
+    }
 
     //  ログインしてれば入力ボックスを開く。してなければログインを促す
     const toggleTextArea = () => {
         if (loginUser) {
-            setTextAreaVisible(!isTextAreaVisible);
+            setTextAreaVisible(!isTextAreaVisible)
         }
         else {
             setShowLoginPopup(true)
         }
-    };
+    }
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
     //コメント削除関連
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    const [showDeletePopup, setShowDeletePopup] = useState(false);
+    const [showDeletePopup, setShowDeletePopup] = useState(false)
 
     const toggleDeleteComment = () => {
         //このチェック、もしかしたらいらないかもしれないけど、一応念のため
@@ -76,11 +76,11 @@ const Comment = ({
     const onConfirm_delete = () => {
         setShowDeletePopup(false)
         HandleDeleteComment({params, commentId, commentUpdated, setCommentUpdated})
-    };
+    }
 
     const onCancel_delete = () => {
         setShowDeletePopup(false)
-    };
+    }
     
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
@@ -88,7 +88,7 @@ const Comment = ({
     
     //いいね関連
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    const [cmtLikes, setCmtLikes] = useState(likeCnt);
+    const [cmtLikes, setCmtLikes] = useState(likeCnt)
     const [isCmtLiked, setIsCmtLiked] = useState(like.includes(loginUser?.userId || "null"))
 
     const likeTextClass = isCmtLiked ? "buttonTextActive" : "buttonTextDefault"
@@ -116,8 +116,8 @@ const Comment = ({
     
     //コメント送信関連
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    const [sendText, setSendText] = useState('');
-    const [isTextAreaVisible, setTextAreaVisible] = useState(false);
+    const [sendText, setSendText] = useState('')
+    const [isTextAreaVisible, setTextAreaVisible] = useState(false)
 
     const handleCommentSubmit = async( sendText: string ) => {
         try {
@@ -131,7 +131,7 @@ const Comment = ({
             alert("コメント投稿失敗")
             console.log(error)
         }
-    };
+    }
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
@@ -159,11 +159,11 @@ const Comment = ({
                 noText="いいえ"
                 />
             )}
-            <div className="main">
-                <Link className="commentAvatar" to="">
+            <div className="mainBlock">
+                <Link className="commentAvatar" to={`/user/myPage/${userId}`}>
                     <UserAvatar imageUrl={userAvatar}/>
                 </Link>
-                <div className="content">
+                <div className="commentContainer">
                     {/* 名前と日付 */}
                     <div className="nameBlock">
                         <div className="nameText">{userName}</div>

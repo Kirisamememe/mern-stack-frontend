@@ -1,4 +1,4 @@
-
+import React, { MouseEventHandler } from 'react'
 
 export type ReadAllType = {
     allItems: ItemType[]
@@ -96,7 +96,7 @@ export type FloatLabelType = {
 
 export type AuthContextType = {
     loginUser: LoginUserType | null
-    setLoginUser: React.Dispatch<React.SetStateAction<LoginUserType | null>>;
+    setLoginUser: React.Dispatch<React.SetStateAction<LoginUserType | null>>
 }
 
 export type ImgInputType = {
@@ -167,7 +167,7 @@ export type InputSubCommentType = {
     handleCommentSubmit: (commentText: string) => void
     isTextAreaVisible: boolean
     // setTextAreaVisible: (newValue: boolean) => void
-    toggleTextArea: (e?: React.MouseEvent) => void;
+    toggleTextArea: (e?: React.MouseEvent) => void
     isSubCommentExist: boolean
     // isCommentButtonClicked: boolean
     // setIsCommentButtonClicked: (newValue: boolean) => void 
@@ -192,4 +192,58 @@ export type HandleDeleteSubCommentType = {
     subCommentId:string
     commentUpdated: boolean
     setCommentUpdated: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export type PostedItemType = {
+    itemId: string
+    title: string
+    mainBody: string
+    image: string
+    date: string
+    likeCnt: number
+    cmtCnt: number
+    isCollect?: boolean
+}
+
+export type MyPageProfileType = {
+    userId: string
+    avatar: string
+    name: string
+    signature: string
+    itemCnt: number
+    coleCnt: number
+    follower: string[]
+    following: string[]
+}
+
+export type ProfileNameBlockType = {
+    userId?: string
+    avatar?: string
+    name: string
+    signature: string
+}
+
+export type ProfileStatusBlockType = {
+    itemCnt: number
+    coleCnt: number
+    follower: number
+    following: number
+}
+
+export type ExtraInfoFriendsType = {
+    friends: ProfileNameBlockType[]
+}
+
+export type TextTabItemTypeT = {
+    textTabItem: TextTabItem[]
+}
+
+type TextTabItem = {
+    isSelected: boolean
+    text: string
+    event: MouseEventHandler<HTMLButtonElement> | undefined
+}
+
+export type ExtraInfoCollectsType = {
+    collectedItems: PostedItemType[]
 }

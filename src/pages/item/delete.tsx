@@ -18,7 +18,7 @@ export const useHandleDelete = () => {
             }
 
             alert(jsonData.message)
-            navigate(`/`);
+            navigate(`/`)
         } catch (error) {
             alert("アイテム削除失敗")
         }

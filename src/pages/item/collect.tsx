@@ -12,7 +12,7 @@ export const CollectController = ({ isCollected, setIsCollected, setCollects, pa
             const action = isCollected ? 'deCollect' : 'collect'
             const itemId = params.id
             const response = await fetchCollect({itemId, userId, action})
-            // const data = await response.json();
+            // const data = await response.json()
         
             // 失敗した時、UIを元に戻す
             if (response.status !== 200) {
@@ -27,6 +27,6 @@ export const CollectController = ({ isCollected, setIsCollected, setCollects, pa
             // console.log(`3: ${isLiked}`)
             console.error('Like failed', error)
         }
-    };
-    return handleCollect;
-};
+    }
+    return handleCollect
+}

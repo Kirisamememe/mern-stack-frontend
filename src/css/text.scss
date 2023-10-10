@@ -1,41 +1,196 @@
-.buttonBarText {
-    width: 8rem;
+//@import 'variables';
+//@import 'mixins';
 
-    color: var(--G1, #2A2933);
-    text-align: center;
-    font-size: 1.4rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 100%; /* 1.4rem */
+body, button {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", 'Noto Sans JP',  "Yu Gothic UI", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-weight: 300;
+    // color: $G0;
 }
 
-.buttonBarTextActive {
-    width: 8rem;
-    
-    color: var(--Brand, #5741E7);
-    text-align: center;
-    font-size: 1.4rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 100%; /* 1.4rem */
+
+h1{
+    color: $G0;
+	font-size: 3.2rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 125%;
+	// align-self: stretch;
 }
 
-.buttonBarCollectTextActive {
-    width: 8rem;
-
-    color: var(--G1, #2A2933);
-    text-align: center;
-    font-size: 1.4rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 100%; /* 1.4rem */
+.title28_G1{
+	font-size: 2.8rem;
 }
+
+.title24_G1{
+	font-size: 2.4rem;
+}
+
+.title20_G1{
+	font-size: 2.0rem;
+}
+
+.title18_G1{
+	font-size: 1.8rem;
+}
+
+.title17_G1{
+	font-size: 1.7rem;
+}
+
+.title16_G1{
+	font-size: 1.6rem;
+}
+
+h2{
+    color: $G0;
+	font-size: 1.7rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 125%; /* 18px */
+}
+
+.title15_G1{
+	font-size: 1.5rem;
+}
+
+.title14_G1{
+	font-size: 1.4rem;
+}
+
+h3{
+    color: $G3;
+	font-size: 1.2rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 100%; /* 12px */
+}
+
+h4{
+	color: $G3;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 100%; /* 12px */
+}
+
+h5{
+	font-size: 1.8rem;
+	font-weight: 600;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+p{
+    // max-width: 72rem;
+	color: $G0;
+	font-size: 1.7rem;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 200%;
+}
+
+.body16_G1_h200 {
+	font-size: 1.6rem;
+}
+
+.body16_G1_h160 {
+	font-size: 1.6rem;
+	line-height: 160%;
+}
+
+.body16_G2_h160 {
+	color: $G2;
+	font-size: 1.6rem;
+	line-height: 160%;
+}
+
+.body15_G1_h200 {
+	font-weight: 300;
+	font-size: 1.5rem;
+}
+
+.body15_G1_h150 {
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 150%;
+}
+
+.body14_G2_h150 {
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 150%;
+	color: $G2;
+}
+
+.body14_G3_h150 {
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 150%;
+	color: $G3;
+}
+
+.body13_G3_h150 {
+	font-weight: 400;
+	font-size: 1.3rem;
+	line-height: 150%;
+	color: $G3;
+}
+
+.body12_G3_h130 {
+	font-weight: 400;
+	font-size: 1.2rem;
+	line-height: 130%;
+	color: $G3;
+}
+
+
+.label14_G3_h100 {
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 100%;
+	color: $G3;
+}
+
+.label13_G3_h100 {
+	font-weight: 400;
+	font-size: 1.3rem;
+	line-height: 100%;
+	color: $G3;
+}
+
+.label12_G3_h100 {
+	font-weight: 400;
+	font-size: 1.2rem;
+	line-height: 100%;
+	color: $G3;
+}
+
+.label11_G3_h100 {
+	font-weight: 400;
+	font-size: 1.1rem;
+	line-height: 100%;
+	color: $G3;
+}
+
+
+/* Form */
+label{
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+}
+
 
 
 .commentTitle {
-    color: var(--G1, #2A2933);
+    color: $G0;
     font-size: 2.4rem;
     font-style: normal;
     font-weight: 700;
     line-height: 100%; /* 2.4rem */
 }
+
+
+

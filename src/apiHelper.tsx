@@ -1,18 +1,35 @@
-const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5050/api"
+const apiUrl = process.env.REACT_APP_API_URL || "http://192.168.50.85:5050/api" || "http://localhost:5050/api"
 const imgURL = process.env.IMG_URL || ""
 
 //readAllItem
 export const fetchBase = async () => {
-    return fetch(`${apiUrl}/`);
-};
-
-//readSingleItem
-export const fetchItem = async (id: string) => {
-    return fetch(`${apiUrl}/item/${id}`)
+    return fetch(`${apiUrl}/`)
 }
 
-export const fetchUser = async (userId: string | null) => {
-    return userId ? fetch(`${apiUrl}/user/readUser/${userId}`) : Promise.resolve(null)
+//readSingleItem
+export const fetchItem = async (id: string, fields?: string[]) => {
+    let url = `${apiUrl}/item/${id}`
+
+    if (fields && fields.length > 0) {
+        const fieldsParam = fields.join(',')
+        url = `${url}?fields=${fieldsParam}`
+    }
+    console.log(url)
+
+    return fetch(url)
+}
+
+//readUser
+export const fetchUser = async (userId: string | null, fields?: string[]) => {
+    let url = userId ? `${apiUrl}/user/readUser/${userId}` : null
+
+    if (url && fields && fields.length > 0) {
+        const fieldsParam = fields.join(',')
+        url = `${url}?fields=${fieldsParam}`
+    }
+    console.log(url)
+
+    return url ? fetch(url) : Promise.resolve(null)
 }
 
 //Create
@@ -136,7 +153,7 @@ export const fetchLike = async ({itemId, action, userId}:{itemId: string, action
         'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId })
-    });
+    })
 
 }
 
@@ -149,7 +166,7 @@ export const fetchLikeComment = async ({commentId, action, userId}:{commentId: s
         'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId })
-    });
+    })
 }
 
 
@@ -162,7 +179,7 @@ export const fetchLikeSubComment = async ({commentId, subCommentId, action, user
         'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId })
-    });
+    })
 
 }
 
@@ -176,7 +193,7 @@ export const fetchCollect = async ({itemId, action, userId}:{itemId: string, act
         'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId })
-    });
+    })
 
 }
 

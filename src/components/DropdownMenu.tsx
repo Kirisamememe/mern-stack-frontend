@@ -15,4 +15,4 @@ const DropdownMenu = ({isOpen, menuItems}: Types.DropdownMenuType) => {
     )
 }
 
-export default DropdownMenu;
+export default DropdownMenu

@@ -1,0 +1,55 @@
+:root {
+    --Brand: #6A55F3;
+    --BrHover: hsla(248, 78%, 58%, 0.1);
+    --BrandGd: linear-gradient(96deg, #5C46ED 5.31%, #816EFF 100%);
+    --BrandGd2: linear-gradient(307deg, #5C46ED 22.19%, #816EFF 77.34%);
+    --BrandGd_Dark: linear-gradient(96deg, #6D58F5 5.31%, #9B8CFF 100%);
+    --Red: #FF375F;
+    --RedHover: rgba(255, 55, 95, 0.05);
+    --G0: #2A2933;
+    --G1: #454452;
+    --G2: #6F6C80;
+    --G3: #A8A5B8;
+    --G4: #D5D3E0;
+    --G5: #E7E6F0;
+    --G6: #F3F2F7;
+    --G7: #F8F7FA;
+    --GO1: rgba(13, 10, 38, 0.80);
+    --GO2: rgba(20, 15, 51, 0.55);
+    --GO3: rgba(25, 19, 64, 0.35);
+    --GO4: rgba(36, 32, 64, 0.20);
+    --GO5: rgba(50, 46, 77, 0.10);
+    --GO6: rgba(66, 62, 89, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+    $BrandGd: var(--BrandGd_Dark);
+}
+
+//display
+$mobile_breakpoint: 600px;
+$tablet_max: 1023px;
+$tablet_min: 601px;
+
+//color
+$Brand: var(--Brand);
+$BrandGd: var(--BrandGd);
+$BrandGd2: var(--BrandGd2);
+$Red: var(--Red);
+$RedHv: var(--RedHover);
+$G0: var(--G0);
+$G1: var(--G1);
+$G2: var(--G2);
+$G3: var(--G3);
+$G4: var(--G4);
+$G5: var(--G5);
+$G6: var(--G6);
+$G7: var(--G7);
+$GO1: var(--GO1);
+$GO2: var(--GO2);
+$GO3: var(--GO3);
+$GO4: var(--GO4);
+$GO5: var(--GO5);
+$GO6: var(--GO6);
+
+

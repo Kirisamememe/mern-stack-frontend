@@ -13,7 +13,7 @@ const CreateItem = () => {
     const [mainBody, setMainBody] = useState("")
     const [isButtonDisabled, setIsButtonDisabled] = useState(true)
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -41,11 +41,11 @@ const CreateItem = () => {
 
 
 
-    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null)
 
     const handleFileChange = (url: string | null) => {
-        setPreviewUrl(url);
-    };
+        setPreviewUrl(url)
+    }
 
 
 
@@ -53,9 +53,9 @@ const CreateItem = () => {
 
     if(loginUser){
         return (
-            <div className="form-container">
+            <div className="form_container fadeIn">
                 <form onSubmit={handleSubmit}>
-                    <div className="img-container">
+                    <div className="img_container">
                         <label className={`${previewUrl !== null ? 'imgInputLabelActive' : 'imgInputLabel'}`} htmlFor="fileInput">
                             <ImgInput className={`${previewUrl && !image ? "imgInputAnimation" : ""}`} text={<div className={`svgBox`} ><ImgUploadIcon/></div>} onFileChange={handleFileChange} setImage={setImage}/>
                             <div className="imgBox">
@@ -66,9 +66,9 @@ const CreateItem = () => {
                             
                         </label>
                     </div>
-                    <div className="form-title">
+                    <div className="form_title">
                         <input style={{display: 'none'}} value={image} onChange={(e) => setTitle(e.target.value)} type="text" name="imageURL" placeholder="URL" required/>
-                        <input className="input-title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="title" placeholder="タイトル" required/>
+                        <input className="input_title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="title" placeholder="タイトル" required/>
                         <textarea value={mainBody} onChange={(e) => setMainBody(e.target.value)} name="mainBody" rows={15} placeholder="本文" required></textarea>
                     </div>
                     

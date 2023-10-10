@@ -7,29 +7,31 @@ import { fetchBase } from '../../apiHelper'
 
 const ReadAll = () => {
     const [allItems, setAllItem] = useState<Types.ReadAllType>()
-    const [maxItems, setMaxItems] = useState(20);
+    const [maxItems, setMaxItems] = useState(20)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     //useEffect：ページを開いたら自動で実行される
     useEffect(() => {
-        document.body.classList.add('homePageBackground');
+        document.body.classList.add('homePageBackground')
 
         const getAllItems = async () => {
             const response = await fetchBase()
             const jsonResponse = await response.json()
             setAllItem(jsonResponse)
+            setIsLoaded(true)
         }
         getAllItems()
 
         return () => {
             document.body.classList.remove('homePageBackground')
-        };
+        }
     },[])
     //この[]はuseEffectの繰り返しを止める
 
 
     return (
-        <div>
-            <div className="grid-container-in">
+        <>
+            <div className={`grid_container_in ${isLoaded ? "fadeIn" : ""}`}>
                 {allItems && allItems.allItems.slice(0, maxItems).map(item => {
                     const utcDate = new Date(item.date) // これがMongoDBから取得したUTC日付と仮定
                     const jstDate = FormatDatePro(utcDate) // ローカライズされた文字列に変換
@@ -37,8 +39,8 @@ const ReadAll = () => {
                         <Link to={`/item/${item._id}`} key={item._id} className="card">
                             <img src={item.image} alt="item" />
                             <div className="cardInfo">
-                                <div className="texts-area">
-                                <h2>{item.title.length > 28 ? `${item.title.substring(0, 28)}…` : item.title}</h2>
+                                <div className="texts_area">
+                                    <h2>{item.title.length > 28 ? `${item.title.substring(0, 28)}…` : item.title}</h2>
                                     {item.mainBody.length > 55 ? `${item.mainBody.substring(0, 55)}…` : item.mainBody}
                                 </div>
                                 <div className="dateAndCollect">
@@ -52,7 +54,7 @@ const ReadAll = () => {
                                 </div>
                             </div>
                         </Link>
-                    );
+                    )
                 })}
             </div>
             {allItems && allItems.allItems.length > maxItems && (
@@ -60,7 +62,7 @@ const ReadAll = () => {
                     <button style={{width: "30rem"}} onClick={() => setMaxItems(maxItems + 16)}>More</button>
                 </div>
             )}
-        </div>
+        </>
     )
 }
 

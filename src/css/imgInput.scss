@@ -1,5 +1,8 @@
+//@import 'variables';
+//@import 'mixins';
+
 /* Img Form */
-.img-container {
+.img_container {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -7,20 +10,20 @@
 
 
 
-.img-input{
+.img_input{
     display: grid;
     grid-template-columns: 0.7fr 0.3fr;
     gap: 1rem;
 }
 
-.img-input > input{
+.img_input > input{
     padding: 1rem 0 0 1rem;
     display: block;
     background-color: rgb(242, 242, 242);
     border: 0rem;
 }
 
-.img-input > button{
+.img_input > button{
     display: flex;
     padding: 0.7rem;
     justify-content: center;
@@ -38,30 +41,30 @@
     z-index: 2;
 }
 
-.img-input > button:hover, .img-input > button:hover svg path{
+.img_input > button:hover, .img_input > button:hover svg path{
     opacity: 1;
-    fill: var(--Brand, #5741E7);;
+    fill: $Brand;
     fill-opacity: 1;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
 }
 
-.img-input >button:disabled, .img-input > button[disabled],
-.img-input svg path{
+.img_input >button:disabled, .img_input > button[disabled],
+.img_input svg path{
     border: 0;
     box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0);
 }
 
-.img-input >button:disabled, .img-input > button[disabled]:hover{
+.img_input >button:disabled, .img_input > button[disabled]:hover{
     opacity: 0.2;
     cursor: not-allowed;
 }
 
 @media(max-width: 400px){ 
-    .img-input{
+    .img_input{
         grid-template-columns: 1fr;
         gap: 0rem;
     }
-    .img-input > button{
+    .img_input > button{
         margin: -1rem 0 3rem;
         height: 3rem;
     }
@@ -72,7 +75,8 @@
     position: relative;
     cursor: pointer;
     display: flex;
-    width: 72rem;
+    width: 100%;
+    max-width: 72rem;
     height: 32rem;
     flex-direction: column;
     justify-content: center;
@@ -83,6 +87,10 @@
     background: #F8F7FA;
     overflow: hidden;
     transition: all 0.3s;
+
+    @include for_mobile($mobile_breakpoint){
+        height: 20rem;
+    }
 }
 
 .imgInputLabel .imgBox img {
@@ -149,7 +157,7 @@
 
 .imgInputLabel .imgBox .imgBoxText {
 
-    color: var(--G3, #A3A1B2);
+    color: $G3;
     text-align: center;
     font-size: 1.8rem;
     font-style: normal;
@@ -165,7 +173,7 @@
     bottom: 45%;
     transform: translateX(-10rem);
 
-    color: var(--G2, #646273);
+    color: $G2;
     opacity: 1;
     text-align: center;
     font-size: 2.4rem;

@@ -9,7 +9,7 @@ export const InputSubComment = ({ userAvatar, userName, sendText, setSendText, h
     const maskClass = isSubCommentExist ? "subLineMask" : "subLineNoMask"
 
     const handleSubmit = () => {
-        handleCommentSubmit(sendText);
+        handleCommentSubmit(sendText)
         setSendText('');  // テキストエリアをクリア
         toggleTextArea()
     }
@@ -17,12 +17,12 @@ export const InputSubComment = ({ userAvatar, userName, sendText, setSendText, h
     return(
         <>
             {isTextAreaVisible && (
-                <div className="sub">
+                <div className="subComment">
                     <div className="subBlock">
                         <Link className="subCommentAvatar" to={""}>
                             <UserAvatar imageUrl={userAvatar}/>
                         </Link>
-                        <div className="content">
+                        <div className="commentContainer">
                             <div className="nameBlock">
                                 <div className="nameText">{userName}</div>
                             </div>
@@ -55,7 +55,7 @@ export const InputSubComment = ({ userAvatar, userName, sendText, setSendText, h
 export const InputComment = ({sendText, setSendText, handleCommentSubmit}: Types.InputCommentType ) => {
 
     const handleSubmit = () => {
-        handleCommentSubmit(sendText);
+        handleCommentSubmit(sendText)
         setSendText('');  // テキストエリアをクリア
     }
 

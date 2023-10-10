@@ -1,108 +1,150 @@
+//@import 'variables';
+//@import 'mixins';
+
 /* Index */
-.container{    
-    max-width: 120rem; 
-    margin-right: auto; 
-    margin-left:    auto;
-    padding-right: 1.5rem; 
-    padding-left:    1.5rem;
+.container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    // max-width: 123.2rem;
+    padding-left: var(--globalPadding, 1.6rem);
+    padding-right: var(--globalPadding, 1.6rem);
+    padding-top: 10.2rem;
+    box-sizing: border-box;
+
+    @include for_mobile($mobile_breakpoint){
+        padding-top: 8rem;
+    }
 }
 
-.grid-container-in{
+.grid_container_in{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1.6rem;
-}
+    max-width: 120rem;
 
-@media(max-width: 600px){ 
-    .grid-container-in{
-            grid-template-columns: 1fr;
+    transition: all 0.3s ease-in;
+
+    @include for_mobile(1023px){
+        grid-template-columns: 1fr 1fr 1fr;
     }
-} 
+    @include for_mobile(767px){
+        grid-template-columns: 1fr 1fr;
+    }
+    @include for_mobile(560px){
+        grid-template-columns: 1fr;
+    }
+}
 
 .card{
     display: block;
     border-radius: 0.6rem;
     width: 100%;
+    min-width: 12rem;
     background: #fff;
     transition: all 0.3s;
-    position: relative
+    position: relative;
+
+    @include for_mobile($mobile_breakpoint){
+        box-shadow: 0px 4px 12px 0px rgba(15, 0, 107, 0.06);
+    }
+
+    &:hover{
+        backdrop-filter: blur(2rem);
+        box-shadow: 0.2rem 0.8rem 1.4rem 0.2rem rgba(15, 0, 107, 0.06);
+        transform: translateY(-0.3rem);
+        transition: all 0.5s;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.6rem;
+        border: 0.1rem solid $GO5;
+        box-sizing: border-box;
+        z-index: 2;
+
+        @include for_mobile($mobile_breakpoint){
+            display: none;
+        }
+    }
+
+    img{
+        width: 100%;
+        aspect-ratio: 3 / 2;
+        border-radius: 0.6rem 0.6rem 0 0; 
+        object-fit: cover;
+    }
+
+    .cardInfo {
+        display: flex;
+        padding: 1.8rem 1.8rem 1.6rem 1.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+        align-self: stretch;
+        border-radius: 0 0 0.6rem 0.6rem;
+    
+        .texts_area{
+            display: flex;
+            height: 110px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            align-self: stretch;
+    
+            overflow: hidden;
+            color: $G2;
+            text-overflow: ellipsis;
+            font-size: 1.3rem;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 150%; /* 1.95rem */
+
+            @include for_mobile($mobile_breakpoint){
+                height: 100%;
+            }
+        }
+    
+        .dateAndCollect {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            align-self: stretch;
+    
+            .collect {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 0.8rem;
+            }
+        }
+    }
 }
 
-.card:hover{
-    backdrop-filter: blur(2rem);
-    box-shadow: 0.2rem 0.8rem 1.4rem 0.2rem rgba(15, 0, 107, 0.06);
-    transform: translateY(-0.3rem);
-    transition: all 0.5s;
-}
 
-.card * img, .card > img{
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    border-radius: 0.6rem 0.6rem 0 0; 
-    object-fit: cover;
-}
-
-.card::before {
-    content: "";
-  	position: absolute;
-  	top: 0;
-  	left: 0;
-  	width: 100%;
-	height: 100%;
-    border-radius: 0.6rem;
-    border: 0.1rem solid var(--GO5, rgba(50, 46, 77, 0.10));
-    box-sizing: border-box;
-    z-index: 2;
-}
-
-
-.cardInfo {
-	display: flex;
-	padding: 1.8rem 1.8rem 1.6rem 1.8rem;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 1.2rem;
-	align-self: stretch;
-	border-radius: 0 0 0.6rem 0.6rem; 
-}
-
-.dateAndCollect {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	align-self: stretch;
-}
-
-.collect {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	gap: 0.8rem;
-}
 
 .collectText {
-	color: var(--G3, #A3A1B2);
-	font-style: normal;
-	font-weight: 400;
-	line-height: 100%; /* 12px */
-}
-
-.texts-area{
-    display: flex;
-	height: 110px;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 10px;
-	align-self: stretch;
-
-    overflow: hidden;
-    color: var(--G2, #646273);
-    text-overflow: ellipsis;
-    font-size: 1.3rem;
+    color: $G3;
     font-style: normal;
-    font-weight: 300;
-    line-height: 150%; /* 1.95rem */
+    font-weight: 400;
+    line-height: 100%; /* 12px */
 }
+
+
+
+
+
+
 
 
 
