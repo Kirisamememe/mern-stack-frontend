@@ -108,7 +108,7 @@ const SubComment = ({ userId, userName, date, userAvatar, commentId, subCommentI
                 noText="いいえ"
                 />
             )}
-            <div className="subBlock">
+            <div className="subBlock fadeIn2">
                 <Link className="subCommentAvatar" to={`/user/myPage/${userId}`}>
                     <UserAvatar imageUrl={userAvatar}/>
                 </Link>

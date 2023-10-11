@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useAuth } from "../../utils/AuthContext"
 import UserAvatar from "../UserAvatar"
@@ -27,6 +27,44 @@ const Comment = ({
     setCommentUpdated }: CommentProps) => {
 
     const params = useParams() as Types.ParamsType
+
+    //出現アニメーション
+    //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    const [isVisible, setIsVisible] = useState(false)
+    const [hasAnimated, setHasAnimated] = useState(false)
+    const commentRef = useRef(null)
+
+    useEffect(() => {
+        const currentRef = commentRef.current
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    setIsVisible(true)
+                    setHasAnimated(true)
+                }
+            },
+            {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // 30% の要素が表示されたら
+            }
+        )
+    
+        if (currentRef) {
+            observer.observe(currentRef);
+        }
+    
+        return () => {
+            if (currentRef) {
+                observer.unobserve(currentRef)
+            }
+        }
+    }, [hasAnimated])
+    //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+
+
     
     //ログイン判定関連
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -144,7 +182,7 @@ const Comment = ({
     
 
     return(
-        <div className="comment">
+        <div style={!isVisible ? {opacity: "0"} : {}} ref={commentRef} className={`comment ${isVisible ? "fadeIn0" : ""}`}>
             {showLoginPopup && (
                 <Popup message={{ title: "ログインしていません", body: "今すぐログインしますか？" }}
                 onConfirm={onConfirm_login} onCancel={onCancel_login}

@@ -54,15 +54,52 @@ footer{
 }
   
 @keyframes fadeIn {
-    0% { 
+    0% {
         opacity: 0;
-        transform: translateY(-5px);
+        transform: translateY(-10px);
     }
-    100% { 
+    100% {
         opacity: 1; 
         transform: translateY(0px);
     }
 }
+
+.fadeIn2 {
+    opacity: 0;
+    animation: fadeIn2 ease-out 1;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+}
+  
+@keyframes fadeIn2 {
+    0% {
+        opacity: 0;
+        transform: translateX(5px);
+    }
+    100% {
+        opacity: 1; 
+        transform: translateX(0px);
+    }
+}
+
+.fadeIn0 {
+    opacity: 0;
+    animation: fadeIn0 ease-out 1;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+}
+  
+@keyframes fadeIn0 {
+    0% {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+    100% {
+        opacity: 1; 
+        transform: translateX(0px);
+    }
+}
+
 
 
 @import 'Item';

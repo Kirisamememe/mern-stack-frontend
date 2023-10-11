@@ -97,7 +97,7 @@
     
         .texts_area{
             display: flex;
-            height: 14rem;
+            height: 12.2rem;
             flex-direction: column;
             align-items: flex-start;
             gap: 1rem;
@@ -112,12 +112,23 @@
             line-height: 150%; /* 1.95rem */
 
             h2 {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+
                 font-size: 1.8rem;
             }
 
-            // p {
-            //     font-size: ;
-            // }
+
+
+            p {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+
+            }
 
             @include for_mobile($mobile_breakpoint){
                 height: 100%;

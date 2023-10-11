@@ -18,13 +18,13 @@ export const InputSubComment = ({ userAvatar, userName, sendText, setSendText, h
         <>
             {isTextAreaVisible && (
                 <div className="subComment">
-                    <div className="subBlock">
+                    <div className="subBlock fadeIn2">
                         <Link className="subCommentAvatar" to={""}>
                             <UserAvatar imageUrl={userAvatar}/>
                         </Link>
                         <div className="commentContainer">
                             <div className="nameBlock">
-                                <div className="nameText">{userName}</div>
+                                <div className="nameText textNoHover">{userName}</div>
                             </div>
                             <textarea
                                 name="subCommentText"

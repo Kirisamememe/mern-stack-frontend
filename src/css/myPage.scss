@@ -104,6 +104,7 @@
                 button {
                     padding: 1.4rem 2.4rem;
                     font-weight: 500;
+                    border: 0.1rem solid rgba($color: #ffffff, $alpha: 0);
 
                     @include for_mobile($mobile_breakpoint){
                         font-size: 1.4rem;

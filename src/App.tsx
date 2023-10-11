@@ -65,9 +65,11 @@ const App = () => {
     }, [lastScrollTop, lastScrollTime, atTop])
 
     useEffect(() => {
-        setHideHeader(false)
+        if (atTop) {
+            setHideHeader(false)
+        }
         // window.scrollTo(0, 0)
-    }, [location])
+    }, [location, atTop])
 
     return(
             <>

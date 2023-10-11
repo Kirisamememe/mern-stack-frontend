@@ -85,6 +85,12 @@
         }
     }
 
+    .textNoHover{
+        &:hover {
+            color: $G0;
+        }
+    }
+
     .dateText {
         color: $G3;
         font-size: 1.4rem;
