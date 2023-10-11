@@ -166,7 +166,7 @@ const Comment = ({
                 <div className="commentContainer">
                     {/* 名前と日付 */}
                     <div className="nameBlock">
-                        <div className="nameText">{userName}</div>
+                        <Link to={`/user/myPage/${userId}`} className="nameText">{userName}</Link>
                         <div className="dateText">{date}</div>
                     </div>
 

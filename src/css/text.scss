@@ -2,8 +2,8 @@
 //@import 'mixins';
 
 body, button {
-    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", 'Noto Sans JP',  "Yu Gothic UI", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-    font-weight: 300;
+    font-family: 'M PLUS 1p', "Hiragino Sans", "Hiragino Kaku Gothic ProN", 'Noto Sans JP',  "Yu Gothic UI", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-weight: 400;
     // color: $G0;
 }
 
@@ -12,7 +12,7 @@ h1{
     color: $G0;
 	font-size: 3.2rem;
 	font-style: normal;
-	font-weight: 600;
+	font-weight: 700;
 	line-height: 125%;
 	// align-self: stretch;
 }
@@ -45,7 +45,7 @@ h2{
     color: $G0;
 	font-size: 1.7rem;
 	font-style: normal;
-	font-weight: 600;
+	font-weight: 500;
 	line-height: 125%; /* 18px */
 }
 
@@ -59,9 +59,9 @@ h2{
 
 h3{
     color: $G3;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 100%; /* 12px */
 }
 
@@ -75,7 +75,7 @@ h4{
 
 h5{
 	font-size: 1.8rem;
-	font-weight: 600;
+	font-weight: 500;
 }
 
 
@@ -108,11 +108,18 @@ p{
 }
 
 .body15_G1_h200 {
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 1.5rem;
 }
 
 .body15_G1_h150 {
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 150%;
+}
+
+.body15_G2_h150 {
+	color: $G2;
 	font-weight: 400;
 	font-size: 1.5rem;
 	line-height: 150%;
@@ -148,7 +155,7 @@ p{
 
 
 .label14_G3_h100 {
-	font-weight: 400;
+	font-weight: 500;
 	font-size: 1.4rem;
 	line-height: 100%;
 	color: $G3;
@@ -162,7 +169,7 @@ p{
 }
 
 .label12_G3_h100 {
-	font-weight: 400;
+	font-weight: 500;
 	font-size: 1.2rem;
 	line-height: 100%;
 	color: $G3;

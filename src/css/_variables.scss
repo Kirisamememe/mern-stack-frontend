@@ -4,6 +4,7 @@
     --BrandGd: linear-gradient(96deg, #5C46ED 5.31%, #816EFF 100%);
     --BrandGd2: linear-gradient(307deg, #5C46ED 22.19%, #816EFF 77.34%);
     --BrandGd_Dark: linear-gradient(96deg, #6D58F5 5.31%, #9B8CFF 100%);
+    --TextHover: #7F72D4;
     --Red: #FF375F;
     --RedHover: rgba(255, 55, 95, 0.05);
     --G0: #2A2933;
@@ -35,6 +36,7 @@ $tablet_min: 601px;
 $Brand: var(--Brand);
 $BrandGd: var(--BrandGd);
 $BrandGd2: var(--BrandGd2);
+$TextHover: var(--TextHover);
 $Red: var(--Red);
 $RedHv: var(--RedHover);
 $G0: var(--G0);

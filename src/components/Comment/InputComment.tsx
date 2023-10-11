@@ -10,7 +10,7 @@ export const InputSubComment = ({ userAvatar, userName, sendText, setSendText, h
 
     const handleSubmit = () => {
         handleCommentSubmit(sendText)
-        setSendText('');  // テキストエリアをクリア
+        setSendText('')  // テキストエリアをクリア
         toggleTextArea()
     }
 

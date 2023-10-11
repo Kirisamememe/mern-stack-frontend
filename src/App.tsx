@@ -28,7 +28,7 @@ const App = () => {
         const handleResize = () => setWindowWidth(window.innerWidth)
 
         const handleScroll = () => {
-            //慣性があるから、<=0 にするとスムーズに切り替わる
+            //慣性があるから、< にするとスムーズに切り替わる
             setAtTop(window.scrollY <= 20)
             const currentScrollTop = window.scrollY
             const currentTime = Date.now()
@@ -66,7 +66,7 @@ const App = () => {
 
     useEffect(() => {
         setHideHeader(false)
-        window.scrollTo(0, 0)
+        // window.scrollTo(0, 0)
     }, [location])
 
     return(

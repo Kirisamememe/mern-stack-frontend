@@ -22,11 +22,13 @@
     transition: all 0.3s ease-in;
 
     .tab {
-        display: flex;
         position: relative;
         height: 5.6rem;
         justify-content: center;
         align-items: center;
+
+        background: none;
+        padding: 0rem;
         flex: 1 0 0;
 
         -webkit-tap-highlight-color: transparent;

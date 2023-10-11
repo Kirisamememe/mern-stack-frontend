@@ -114,7 +114,7 @@ const SubComment = ({ userId, userName, date, userAvatar, commentId, subCommentI
                 </Link>
                 <div className="commentContainer">
                     <div className="nameBlock">
-                        <div className="nameText">{userName}</div>
+                        <Link to={`/user/myPage/${userId}`} className="nameText">{userName}</Link>
                         <div className="dateText">{date}</div>
                     </div>
                     <div>

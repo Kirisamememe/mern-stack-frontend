@@ -41,7 +41,7 @@ const ReadAll = () => {
                             <div className="cardInfo">
                                 <div className="texts_area">
                                     <h2>{item.title.length > 28 ? `${item.title.substring(0, 28)}…` : item.title}</h2>
-                                    {item.mainBody.length > 55 ? `${item.mainBody.substring(0, 55)}…` : item.mainBody}
+                                    <p className="body15_G2_h150">{item.mainBody.length > 55 ? `${item.mainBody.substring(0, 55)}…` : item.mainBody}</p>
                                 </div>
                                 <div className="dateAndCollect">
                                     <h3>{jstDate}</h3>

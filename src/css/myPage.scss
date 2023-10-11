@@ -414,8 +414,9 @@
 
 
         .title20_G1{
+            font-weight: 500;
             @include for_mobile($mobile_breakpoint){
-                // font-weight: 600;
+                // font-weight: 500;
                 font-size: 1.7rem;
             }
         }
@@ -516,7 +517,7 @@
 
         .title20_G1{
             font-size: 1.7rem;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .mainBody{

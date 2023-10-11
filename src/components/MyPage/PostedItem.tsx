@@ -8,7 +8,7 @@ const PostedItem = ({itemId, isCollect, title, mainBody, image, date, likeCnt, c
     const className = isCollect ? "collectedItem" : "postedItem"
 
     return (
-        <Link to={`/item/${itemId}`} className={className}>
+        <Link to={`/item/${itemId}`} className={`${className} fadeIn`}>
             <div className="content">
                 <div className="textBlock">
                     <h1 className="title20_G1">{title}</h1>
@@ -18,13 +18,13 @@ const PostedItem = ({itemId, isCollect, title, mainBody, image, date, likeCnt, c
                 <div className="itemInfo">
                     <div className="iconAndText">
                         <LikeIcon20 isCmtLiked={false} animate={false} />
-                        <p className="label12_G3_h100">{likeCnt}</p>
+                        <p className="label13_G3_h100">{likeCnt}</p>
                     </div>
                     <div className="iconAndText">
                         <CommentIcon20/>
-                        <p className="label12_G3_h100">{cmtCnt}</p>
+                        <p className="label13_G3_h100">{cmtCnt}</p>
                     </div>
-                    <p className="label12_G3_h100">{date}</p>
+                    <p className="label13_G3_h100">{date}</p>
                 </div>
             </div>
             <div className="image">

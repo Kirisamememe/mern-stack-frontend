@@ -52,9 +52,9 @@ const MobileNav = ({hide}: {hide: boolean}) => {
                     <PostTab/>
                 </div>
             </Link>
-            <Link id="search" className="tab" to="" onClick={handleSearchAnime}>
+            <button id="search" className="tab" onClick={handleSearchAnime}>
                 <SearchIconTab isSelected={isSearch} animate={searchAnimate}/>
-            </Link>
+            </button>
             <Link id="myPage" className="tab" to={loginUser ? `/user/myPage/${localStorage.getItem("userId")}` : "/user/login"} onClick={handleMyPageAnime}>
                 <MyPageIconTab isSelected={isMyPage} animate={myPageAnimate}/>
             </Link>
