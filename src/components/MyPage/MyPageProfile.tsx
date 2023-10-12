@@ -4,19 +4,36 @@ import { useAuth } from "../../utils/AuthContext"
 import Avatar from "../Avatar"
 import ProfileNameBlock from "./ProfileNameBlock"
 import ProfileStatusBlock from "./ProfileStatusBlock"
+import { FollowController } from "../FollowController"
 import * as Types from "../../types"
 
-const MyPageProfile = ({ userId, avatar, name, signature, itemCnt, coleCnt, follower, following }: Types.MyPageProfileType ) => {
+const MyPageProfile = ({ setUserUpdated, userId, avatar, name, signature, itemCnt, coleCnt, following, follower }: Types.MyPageProfileType ) => {
 
     const { loginUser } = useAuth()
     const [isFollowing, setIsFollowing] = useState(false)
+    const [followers, setFollowers] = useState(0)
     const [isHovered, setIsHovered] = useState(false)
 
 
     const handleFollow = () => {
-        setIsFollowing(!isFollowing)
-        setIsHovered(false)
-        //FollowController()()
+        console.log(isFollowing, followers)
+
+        if (loginUser) {
+            setIsHovered(false)
+
+            FollowController({
+                setUserUpdated: setUserUpdated,
+                isFollowing: isFollowing,
+                setIsFollowing: setIsFollowing,
+                setFollowers: setFollowers,
+                yourId: userId,
+                myId: loginUser.userId
+            })()
+            
+        }
+        else {
+            console.log('ログインしてください')
+        }
     }
 
     const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -33,7 +50,8 @@ const MyPageProfile = ({ userId, avatar, name, signature, itemCnt, coleCnt, foll
 
     useEffect(() => {
         setIsFollowing(follower.includes(loginUser?.userId || ""))
-
+        setFollowers(follower.length)
+        
 
     },[follower, loginUser])
 
@@ -60,8 +78,8 @@ const MyPageProfile = ({ userId, avatar, name, signature, itemCnt, coleCnt, foll
                 <ProfileStatusBlock
                     itemCnt={itemCnt}
                     coleCnt={coleCnt}
-                    follower={follower.length}
-                    following={following.length}
+                    follower={following.length}
+                    following={followers}
                 />
             </div>
         </div>

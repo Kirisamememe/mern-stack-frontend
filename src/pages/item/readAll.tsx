@@ -34,7 +34,7 @@ const ReadAll = () => {
             <div className={`grid_container_in ${isLoaded ? "fadeIn" : ""}`}>
                 {allItems && allItems.allItems.slice(0, maxItems).map(item => {
                     const utcDate = new Date(item.date) // これがMongoDBから取得したUTC日付と仮定
-                    const jstDate = FormatDatePro(utcDate) // ローカライズされた文字列に変換
+                    const jstDate = FormatDatePro(utcDate, "YMD") // ローカライズされた文字列に変換
                     return (
                         <Link to={`/item/${item._id}`} key={item._id} className="card">
                             <img src={item.image} alt="item" />

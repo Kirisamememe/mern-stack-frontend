@@ -18,16 +18,18 @@
     z-index: 3; /* 他の要素より前面に */
 
     opacity: 0;
-    transform: translateY(10%);
+    scale: 95%;
+    transform: translateY(5%);
     visibility: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease-in-out, visibility 0s ease 0.3s;
+    transition: opacity 0.3s ease, scale 0.3s, transform 0.3s ease-in-out, visibility 0s ease 0.3s;
 }
 
 .show {
     opacity: 1;  /* 完全に不透明に */
+    scale: 100%;
     transform: translateY(0%);
     visibility: visible;
-    transition: opacity 0.3s ease, transform 0.3s ease-in-out, visibility 0s ease 0s;
+    transition: opacity 0s ease, scale 0s, transform 0s ease-in-out, visibility 0s ease 0s;
 }
 
 .menu {

@@ -91,7 +91,9 @@ const Header = ({ atTop }: { atTop: boolean }) => {
         return (
             <>
             <header>
-                <Link to="/"><img src={forceDarkMode ? "/logo_dark.svg" : "/logo.svg"} alt="header"/></Link>
+                <div className="logo">
+                    <Link to="/"><img src={forceDarkMode ? "/logo_dark.svg" : "/logo.svg"} alt="header"/></Link>
+                </div>
                 <nav>
                     <Link style={forceDarkMode ? {color: "#FFF"}:{}} className="button_sub" to="/user/register">登録</Link>
                     <Link className="button_main" to="/user/login">ログイン</Link>

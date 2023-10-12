@@ -30,7 +30,11 @@
             // position: relative;
             display: flex;
             align-items: center;
-            gap: 20px;  /* ボタン間の隙間 */
+            gap: 2rem;  /* ボタン間の隙間 */
+
+            @include for_mobile($mobile_breakpoint){
+                gap: 0.4rem;
+            }
 
             .nav_button {
                 display: flex;

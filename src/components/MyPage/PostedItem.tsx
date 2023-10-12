@@ -8,7 +8,7 @@ const PostedItem = ({itemId, isCollect, title, mainBody, image, date, likeCnt, c
     const className = isCollect ? "collectedItem" : "postedItem"
 
     return (
-        <Link to={`/item/${itemId}`} className={`${className} fadeIn`}>
+        <Link to={`/item/${itemId}`} className={`${className}`}>
             <div className="content">
                 <div className="textBlock">
                     <h1 className="title20_G1">{title}</h1>

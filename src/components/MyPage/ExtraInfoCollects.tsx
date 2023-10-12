@@ -37,7 +37,7 @@ const ExtraInfoCollects = ({ collects }:{ collects: string[] }) => {
 
 
     return (
-        <div className="extraInfoCollects">
+        <div className="extraInfoCollects fadeIn">
             <BlockTitle text="コレクト"/>
             <div className="collects">
                 {postsInfo.map(post => (
@@ -48,7 +48,7 @@ const ExtraInfoCollects = ({ collects }:{ collects: string[] }) => {
                         title={post.title}
                         mainBody={post.mainBody}
                         image={post.image}
-                        date={FormatDatePro(new Date(post.date), "MDHM")}
+                        date={FormatDatePro(new Date(post.date))}
                         likeCnt={post.likeCnt}
                         cmtCnt={post.cmtCnt}
                     />

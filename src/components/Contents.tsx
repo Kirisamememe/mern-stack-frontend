@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import * as Types from "../types"
 
 const Contents = ({singleItem, FormatDate, paragraphs}: Types.ContentsType) => {
@@ -11,7 +12,7 @@ const Contents = ({singleItem, FormatDate, paragraphs}: Types.ContentsType) => {
                     <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2rem", alignSelf: "stretch"}}>
                         <h1>{singleItem.title}</h1>
                         <div className="textInfo">
-                            <div className="authorName">{singleItem.name ? `${singleItem.name}` : "Null"}</div>
+                            <Link to={`/user/myPage/${singleItem.userId}`} className="authorName">{singleItem.name ? `${singleItem.name}` : "Null"}</Link>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M9 1H10L7 15H6L9 1Z" fill="#D9D9D9"/>
                             </svg>

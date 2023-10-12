@@ -34,11 +34,18 @@ button:disabled{
 
 	text-align: center;
 	line-height: 100%;
-	color: #000000;
+	color: $G0;
     font-size: 1.6rem;
     font-weight: 500;
     transition: all 0.3s;
+
+    @include for_mobile($mobile_breakpoint){
+        min-width: 5rem;
+        padding: 1rem 1rem;
+        font-size: 1.4rem;
+    }
 }
+
 .button_sub:hover {
     opacity: 0.8;
     transition: all 0.3s;
@@ -57,7 +64,7 @@ button:disabled{
 }
 
 .button_cancel{
-    background: #000000;
+    background: $G0;
     font-size: 1.6rem;
     color: #fff;
     padding: 0.6rem;
@@ -105,6 +112,12 @@ button:disabled{
     font-weight: 500;
     border: none;  /* デフォルトのボーダーを消す */
     transition: all 0.3s;
+
+    @include for_mobile($mobile_breakpoint){
+        min-width: 6rem;
+        padding: 1rem 1.4rem;
+        font-size: 1.4rem;
+    }
 }
 
 .button_main:hover {
@@ -114,7 +127,7 @@ button:disabled{
 
 button.sub {
     background-color: transparent;
-    color: #000000;
+    color: $G0;
 }
 
 

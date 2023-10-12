@@ -82,17 +82,36 @@ footer{
     }
 }
 
-.fadeIn0 {
+.fadeInCmt {
     opacity: 0;
-    animation: fadeIn0 ease-out 1;
+    animation: fadeInCmt ease-out 1;
     animation-fill-mode: forwards;
     animation-duration: 0.5s;
 }
   
-@keyframes fadeIn0 {
+@keyframes fadeInCmt {
     0% {
         opacity: 0;
-        transform: translateX(15px);
+        transform: translateX(8px);
+    }
+    100% {
+        opacity: 1; 
+        transform: translateX(0px);
+    }
+}
+
+.fadeInSbCmt {
+    opacity: 0;
+    animation: fadeInSbCmt ease-out 1;
+    animation-delay: 0.1s;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+}
+  
+@keyframes fadeInSbCmt {
+    0% {
+        opacity: 0;
+        transform: translateX(8px);
     }
     100% {
         opacity: 1; 

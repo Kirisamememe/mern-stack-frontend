@@ -24,7 +24,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(180deg, rgba(21, 20, 26, 1) 0%, rgba(21, 20, 26, 0.80) 100%);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.30) 100%);
     }
 
     @include for_mobile($mobile_breakpoint){
@@ -519,6 +519,12 @@
         .title20_G1{
             font-size: 1.7rem;
             font-weight: 500;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .mainBody{

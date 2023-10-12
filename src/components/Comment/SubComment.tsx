@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../utils/AuthContext"
 import UserAvatar from "../UserAvatar"
@@ -15,6 +15,41 @@ const SubComment = ({ userId, userName, date, userAvatar, commentId, subCommentI
 
     const { loginUser } = useAuth()
     const navigate = useNavigate()
+
+    //出現アニメーション
+    //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    const [isVisible, setIsVisible] = useState(false)
+    const [hasAnimated, setHasAnimated] = useState(false)
+    const commentRef = useRef(null)
+
+    useEffect(() => {
+        const currentRef = commentRef.current
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    setIsVisible(true)
+                    setHasAnimated(true)
+                }
+            },
+            {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // 30% の要素が表示されたら
+            }
+        )
+    
+        if (currentRef) {
+            observer.observe(currentRef);
+        }
+    
+        return () => {
+            if (currentRef) {
+                observer.unobserve(currentRef)
+            }
+        }
+    }, [hasAnimated])
+    //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
     
 
@@ -108,7 +143,7 @@ const SubComment = ({ userId, userName, date, userAvatar, commentId, subCommentI
                 noText="いいえ"
                 />
             )}
-            <div className="subBlock fadeIn2">
+            <div style={!isVisible ? {opacity: "0"} : {}} ref={commentRef} className={`subBlock ${isVisible ? "fadeInSbCmt" : ""}`}>
                 <Link className="subCommentAvatar" to={`/user/myPage/${userId}`}>
                     <UserAvatar imageUrl={userAvatar}/>
                 </Link>

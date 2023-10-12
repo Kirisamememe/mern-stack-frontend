@@ -182,7 +182,7 @@ const Comment = ({
     
 
     return(
-        <div style={!isVisible ? {opacity: "0"} : {}} ref={commentRef} className={`comment ${isVisible ? "fadeIn0" : ""}`}>
+        <div style={!isVisible ? {opacity: "0"} : {}} ref={commentRef} className={`comment ${isVisible ? "fadeInCmt" : ""}`}>
             {showLoginPopup && (
                 <Popup message={{ title: "ログインしていません", body: "今すぐログインしますか？" }}
                 onConfirm={onConfirm_login} onCancel={onCancel_login}

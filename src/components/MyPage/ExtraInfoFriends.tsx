@@ -6,7 +6,7 @@ import BlockTitle from "../BlockTitle"
 import { fetchUser } from '../../apiHelper'
 // import * as Types from "../../types"
 
-const ExtraInfoFriends = ({friends}: {friends: string[]}) => {
+const ExtraInfoFriends = ({ isMe, friends }: { isMe: boolean, friends: string[] }) => {
 
     const [followedUsersProfile, setFollowedUsersProfile] = useState<{userId: string, name: string, avatar: string, signature: string}[]>([])
 
@@ -37,7 +37,7 @@ const ExtraInfoFriends = ({friends}: {friends: string[]}) => {
 
     return (
         <div className="extraInfoFriends">
-            <BlockTitle text="おすすめのユーザー"/>
+            <BlockTitle text={isMe? "フレンズ" : "共通のフォロー"}/>
             <div className="friends">
                 {followedUsersProfile.map((profile) => (
                     <ExtraInfoFriendsUser

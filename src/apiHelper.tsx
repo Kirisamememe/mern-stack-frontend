@@ -1,4 +1,4 @@
-const apiUrl = process.env.REACT_APP_API_URL || "http://192.168.50.85:5050/api" || "http://localhost:5050/api"
+const apiUrl = process.env.REACT_APP_API_URL || process.env.REACT_APP_API_URL_LOCAL
 const imgURL = process.env.IMG_URL || ""
 
 //readAllItem
@@ -149,8 +149,8 @@ export const fetchLike = async ({itemId, action, userId}:{itemId: string, action
     return fetch(`${apiUrl}/item/${itemId}/${action}`, {
         method: 'POST',
         headers: {
-        'Authorization': `Bearer ${localStorage.getItem("token")}`,
-        'Content-Type': 'application/json'
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId })
     })
@@ -162,8 +162,8 @@ export const fetchLikeComment = async ({commentId, action, userId}:{commentId: s
     return fetch(`${apiUrl}/comment/${commentId}/${action}`, {
         method: 'POST',
         headers: {
-        'Authorization': `Bearer ${localStorage.getItem("token")}`,
-        'Content-Type': 'application/json'
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId })
     })
@@ -175,8 +175,8 @@ export const fetchLikeSubComment = async ({commentId, subCommentId, action, user
     return fetch(`${apiUrl}/comment/${commentId}/${subCommentId}/${action}`, {
         method: 'POST',
         headers: {
-        'Authorization': `Bearer ${localStorage.getItem("token")}`,
-        'Content-Type': 'application/json'
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId })
     })
@@ -189,8 +189,8 @@ export const fetchCollect = async ({itemId, action, userId}:{itemId: string, act
     return fetch(`${apiUrl}/item/${itemId}/${action}`, {
         method: 'POST',
         headers: {
-        'Authorization': `Bearer ${localStorage.getItem("token")}`,
-        'Content-Type': 'application/json'
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId })
     })
@@ -222,6 +222,17 @@ export const postRegister = async (newUser: {email: string, password: string, na
     })
 }
 
+//Follow
+export const follow = async ({yourId, myId, action}: {yourId: string, myId: string, action: string}) => {
+    return fetch(`${apiUrl}/user/${yourId}/${action}`, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ myId })
+    })
+}
 
 
 //Upload Image

@@ -43,7 +43,7 @@ const PostedItemBlock = ({ posts }:{ posts: string[] }) => {
                     title={post.title}
                     mainBody={post.mainBody}
                     image={post.image}
-                    date={FormatDatePro(new Date(post.date), "MDHM")}
+                    date={FormatDatePro(new Date(post.date))}
                     likeCnt={post.likeCnt}
                     cmtCnt={post.cmtCnt}
                 />

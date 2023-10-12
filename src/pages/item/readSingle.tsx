@@ -29,6 +29,7 @@ const ReadSingle = () => {
         mainBody: "",
         email: "",
         name: "",
+        userId: "",
         collect: 0,
         like: [],
         comments:[{
@@ -57,7 +58,6 @@ const ReadSingle = () => {
 
     const [isLoading, setIsLoading] = useState(true)
 
-    // const navigate = useNavigate()
 
     //ここからは削除するための処理
     const [showPopup, setShowPopup] = useState(false)
@@ -123,10 +123,11 @@ const ReadSingle = () => {
                         mainBody: jsonResponse.singleItem.mainBody,
                         email: jsonResponse.singleItem.email,
                         name: jsonResponse.singleItem.name,
+                        userId: jsonResponse.singleItem.userId,
                         collect: jsonResponse.singleItem.collect,
                         comments: jsonResponse.singleItem.comments?.map((comment: Types.CommentType) => ({
 
-                            date: FormatDatePro(new Date(comment.date), "MDHM"),
+                            date: FormatDatePro(new Date(comment.date)),
                             userId: comment.userId,
                             userName: comment.userName,
                             userAvatar: comment.userAvatar,
@@ -136,7 +137,7 @@ const ReadSingle = () => {
                             likeCnt: comment.like.length,
                             subComments: comment.subComments?.map((subComment: Types.SubCommentType, index: number, arr: Types.SubCommentType[]) => ({
 
-                                date: FormatDatePro(new Date(subComment.date), "MDHM"),
+                                date: FormatDatePro(new Date(subComment.date)),
                                 userId: subComment.userId,
                                 userName: subComment.userName,
                                 userAvatar: subComment.userAvatar,

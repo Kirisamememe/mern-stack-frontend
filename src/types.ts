@@ -39,6 +39,7 @@ export type ItemType = {
     mainBody: string
     email: string
     name: string
+    userId: string
     collect: number
     comments: CommentType[] | null
     like: string[]
@@ -206,6 +207,7 @@ export type PostedItemType = {
 }
 
 export type MyPageProfileType = {
+    setUserUpdated: React.Dispatch<React.SetStateAction<boolean>>
     userId: string
     avatar: string
     name: string
@@ -246,4 +248,14 @@ type TextTabItem = {
 
 export type ExtraInfoCollectsType = {
     collectedItems: PostedItemType[]
+}
+
+
+export type FollowControllerType = {
+    isFollowing: boolean
+    setFollowers: React.Dispatch<React.SetStateAction<number>>
+    setIsFollowing: React.Dispatch<React.SetStateAction<boolean>>
+    yourId: string
+    myId: string
+    setUserUpdated: React.Dispatch<React.SetStateAction<boolean>>
 }
